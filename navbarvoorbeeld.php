@@ -22,20 +22,22 @@
             <div class="flex items-center justify-between h-16">
                 <div class=" flex items-center">
                     <a class="flex-shrink-0" href="/">
-                        <img class="h-8 w-8" src="/icons/rocket.svg" alt="Workflow"/>
+                    <a class="text-gray-800 dark:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                ScrumTeamDashboard
+                            </a>
                     </a>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
                             <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/#">
                                 Dashboard
                             </a>
-                            <a class="text-gray-800 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/#">
+                            <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/gebruikes.php">
                                 Gebruikers
                             </a>
-                            <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/#">
+                            <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/groepen.php">
                                 Groepen
                             </a>
-                            <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/#">
+                            <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/lessen.php">
                                 Lessen
                             </a>
                         </div>
@@ -53,7 +55,7 @@
                                         </svg>
                                     </button>
                                 </div>
-                                <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5">
+                                <!-- <div class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5">
                                     <div class="py-1 " role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                                         <a href="#" class="block block px-4 py-2 text-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-100 dark:hover:text-white dark:hover:bg-gray-600" role="menuitem">
                                             <span class="flex flex-col">
@@ -70,7 +72,7 @@
                                             </span>
                                         </a>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -90,22 +92,19 @@
                 <a class="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium" href="/#">
                     Dashboard
                 </a>
-                <a class="text-gray-800 dark:text-white block px-3 py-2 rounded-md text-base font-medium" href="/#">
+                <a class="text-gray-800 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/gebruikers.php">
                     Gebruikers
-                </a>
-                <a class="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium" href="/#">
+                 </a>
+                    <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/groepen.php">
                     Groepen
-                </a>
-                <a class="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium" href="/#">
+                 </a>
+                <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/lessen.php">
                     Lessen
-                </a>
+                 </a>
             </div>
         </div>
     </nav>
 </div>
-
-
-
 </body>        
 
 </html>
