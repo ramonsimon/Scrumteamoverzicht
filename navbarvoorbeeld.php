@@ -17,27 +17,27 @@
 
 
 <div>
-    <nav class="bg-white dark:bg-gray-800  shadow ">
+    <nav class="bg-blue-700 dark:bg-gray-800  shadow ">
         <div class="max-w-7xl mx-auto px-8">
             <div class="flex items-center justify-between h-16">
                 <div class=" flex items-center">
                     <a class="flex-shrink-0" href="/">
-                    <a class="text-gray-800 dark:text-white px-3 py-2 rounded-md text-sm font-medium">
+                    <a class="text-white px-3 py-2 rounded-md text-sm font-medium">
                                 ScrumTeamDashboard
                             </a>
                     </a>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
-                            <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/#">
+                            <a class="text-white  hover:text-gray-400 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="#">
                                 Dashboard
                             </a>
-                            <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/gebruikes.php">
+                            <a class="text-white  hover:text-gray-400 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="gebruikers.php">
                                 Gebruikers
                             </a>
-                            <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/groepen.php">
+                            <a class="text-white hover:text-gray-400 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="groepen.php">
                                 Groepen
                             </a>
-                            <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/lessen.php">
+                            <a class="text-white  hover:text-gray-400 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="lessen.php">
                                 Lessen
                             </a>
                         </div>
@@ -89,18 +89,18 @@
         </div>
         <div class="md:hidden">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a class="text-gray-300 hover:text-gray-800 dark:hover:text-white block px-3 py-2 rounded-md text-base font-medium" href="/#">
-                    Dashboard
-                </a>
-                <a class="text-gray-800 dark:text-white  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/gebruikers.php">
-                    Gebruikers
-                 </a>
-                    <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/groepen.php">
-                    Groepen
-                 </a>
-                <a class="text-gray-300  hover:text-gray-800 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="/lessen.php">
-                    Lessen
-                 </a>
+                            <a class="text-white  hover:text-gray-400 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="#">
+                                Dashboard
+                            </a>
+                            <a class="text-white  hover:text-gray-400 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="gebruikers.php">
+                                Gebruikers
+                            </a>
+                            <a class="text-white hover:text-gray-400 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="groepen.php">
+                                Groepen
+                            </a>
+                            <a class="text-white  hover:text-gray-400 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium" href="lessen.php">
+                                Lessen
+                            </a>
             </div>
         </div>
     </nav>

@@ -16,6 +16,9 @@
 
 <body>
 
+<br>
+<h1 class="text-3xl text-center">Groepen</h1>
+
 <div class="pagewrapper">
 		<div class="flex">
 			<!-- <div class="flex-grow"><h1 class="h1">Gebruikers</h1></div>
@@ -28,19 +31,16 @@
 						<thead>
 							<tr>
 								<th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-									Gebruikersnaam
+									Groepnaam
 								</th>
 								<th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-									Voornaam
+									Leden
 								</th>
 								<th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-									Achternaam
+									Locatie
 								</th>
 								<th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-									Wachtwoord
-								</th>
-                                <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-									Rol
+									Project
 								</th>
 								<th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
 									Acties

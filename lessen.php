@@ -16,6 +16,9 @@
 
 <body>
 
+<br>
+<h1 class="text-3xl text-center">Lessen</h1>
+
 <div class="pagewrapper">
 		<div class="flex">
 			<!-- <div class="flex-grow"><h1 class="h1">Gebruikers</h1></div>
