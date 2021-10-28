@@ -1,3 +1,20 @@
+<?php
+
+// Pathprefix
+$pathprefix = '../../';
+
+// request gebruikers
+include_once('gebruiker_functies.php');
+
+// Start session
+session_start();
+
+// Requests users
+$gebruikers = new Gebruiker();
+$gebruikers->gebruikersOphalen();
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -6,7 +23,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css">
 	<link href="src/tailwind.css" rel="stylesheet">
-	<link href="assets/fontawesome/css/fontawesome.css" rel="stylesheet">
+	<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
 	<link href="assets/fontawesome/css/solid.css" rel="stylesheet">
 	<script type="text/javascript" src="assets/navbar.js"></script>
     <?php include 'navbarvoorbeeld.php' ?>
@@ -50,6 +67,67 @@
 								</th>
 							</tr>
 						</thead>
+						<tbody>
+						<tr>
+							<?php 
+
+							// Requests all users
+							$gebruikers_result = $gebruikers->gebruikersOphalen();
+
+							// Loops through users
+							foreach ($gebruikers_result as $item)
+							{
+								// Checks and defines the role of a user
+								if($item["rol"] == 0){
+									$rol = 'Student';
+								} else { 
+									$rol = 'Docent';
+								}
+								echo 
+								"
+								<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+									<p class='text-gray-900 whitespace-no-wrap'>
+									"; echo $item['gebruikersnaam'];"
+									</p>
+								</td>";
+								echo 
+								"<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+									<p class='text-gray-900 whitespace-no-wrap'>
+										"; echo $item['voornaam'];"
+									</p>
+								</td>";
+
+								echo 
+								"<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+									<p class='text-gray-900 whitespace-no-wrap'>
+									"; echo $item['achternaam'];" 
+									</p>
+								</td>";
+
+								echo 
+								"<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+									<p class='text-gray-900 whitespace-no-wrap'>
+									"; echo $item['wachtwoord'];" 
+									</p>
+								</td>";
+								
+								echo 
+								"
+								<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+									<p class='text-gray-900 whitespace-no-wrap'>
+									"; echo $rol;" 
+									</p>
+								</td>";
+								echo 
+								'
+								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<form class="inline" method="POST" action="' . $pathprefix . 'handlers/gebruikerDelete.php">
+										<button name="verwijderen" value="'.$item['id'].'" type="submit"><i class="far fa-trash-alt"></i></button> 
+									</form>
+									<a href="./wijzigen.php?id='.$item['id'].'" type="submit"><i class="fas fa-user-edit"></i></a> 
+								</td>
+						</tr>';} ?>
+					</tbody>
 
 </body>        
 
