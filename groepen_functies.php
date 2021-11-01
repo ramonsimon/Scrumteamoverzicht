@@ -60,22 +60,6 @@ public function groepWijzigen($id, $groepnaam, $leden, $locatie, $projectnaam) {
     header("location:groepen.php");
 }
 
-// Updates a cleaner with password
-public function groepWijzigenMetWachtwoord($id, $groepnaam, $leden, $locatie, $projectnaam) {
-    $stmt = $this->database->connection->prepare("UPDATE groepen SET groepnaam=?,leden=?,locatie=?,projectnaam=? WHERE id= ?");
-    $stmt->bind_param('ssssi', $groepnaam, $leden, $locatie, $projectnaam, $id);
-    $stmt->execute();
-    header("location:groepen.php");
-}
-
-// Updates password
-public function wachtwoordWijzigen($id, $wachtwoord) {
-    $stmt = $this->database->connection->prepare("UPDATE groepen SET wachtwoord=? WHERE id= ?");
-    $stmt->bind_param('si', $wachtwoord, $id);
-    $stmt->execute();
-    header("location:groepen.php");
-}
-
 // Gets user based on the id
 public function groepOphalen($id) {
     $stmt = $this->database->connection->prepare('SELECT * FROM groepen WHERE id= ? LIMIT 1');

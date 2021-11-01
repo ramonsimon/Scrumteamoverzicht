@@ -56,7 +56,7 @@ foreach ($groep as $singleGroep){
                 </div>
                 <div class="flex flex-wrap my-4">
                     <div class="flex-inherit w-60"><label class="font-semibold leading-10" leading-10>Leden:</label></div>
-                    <div class="flex-grow"><input type="text" value="'.  $groep['leden'] .'" name="Leden" class="input" required /></div>
+                    <div class="flex-grow"><input type="text" value="'.  $groep['leden'] .'" name="leden" class="input" required /></div>
                 </div>
                 <div class="flex flex-wrap my-4">
                     <div class="flex-inherit w-60"><label class="font-semibold leading-10">Locatie:</label></div>
