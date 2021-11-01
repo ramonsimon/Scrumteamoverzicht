@@ -2,7 +2,7 @@
 
 // Incudes db
 require_once('dbConnection.php');
-class Gebruiker{
+class Groep{
 
 private $database = [];
     
@@ -15,13 +15,13 @@ public function __construct(){
 // Deletes a user 
 public function groepVerwijderen($id) {
     
-    $stmt2 = $this->database->connection->prepare("DELETE FROM opmerkingen WHERE opmerkingen.idgroepen= ?");
-    $stmt2->bind_param('i', $id);
-    $stmt2->execute(); 
+    // $stmt2 = $this->database->connection->prepare("DELETE FROM opmerkingen WHERE opmerkingen.idgroepen= ?");
+    // $stmt2->bind_param('i', $id);
+    // $stmt2->execute(); 
 
-    $stmt3 = $this->database->connection->prepare("DELETE FROM planning WHERE planning.idgroepen= ?");
-    $stmt3->bind_param('i', $id);
-    $stmt3->execute(); 
+    // $stmt3 = $this->database->connection->prepare("DELETE FROM planning WHERE planning.idgroepen= ?");
+    // $stmt3->bind_param('i', $id);
+    // $stmt3->execute(); 
 
     $stmt = $this->database->connection->prepare("DELETE FROM groepen WHERE id= ?");
     $stmt->bind_param('i', $id);
@@ -45,35 +45,19 @@ public function schoonmakersOphalen() {
 }
 
 // Adds a cleaner
-public function groepToevoegen($groepennaam, $leden, $locatie, $project) {
-    $stmt = $this->database->connection->prepare("INSERT INTO groepen (groepnaam,leden,locatie,project) VALUES (?,?,?,?)");
-    $stmt->bind_param('ssss', $groepennaam, $leden, $locatie, $project);
+public function groepToevoegen($groepnaam, $leden, $locatie, $projectnaam) {
+    $stmt = $this->database->connection->prepare("INSERT INTO groepen (groepnaam,leden,locatie,projectnaam) VALUES (?,?,?,?)");
+    $stmt->bind_param('ssss', $groepnaam, $leden, $locatie, $projectnaam);
     $stmt->execute();
-    header("location:../admin/groepen/");
+    header("location:groepen.php");
 }
 
 // Updates a cleaner
-public function groepWijzigen($id, $groepennaam, $leden, $locatie) {
-    $stmt = $this->database->connection->prepare("UPDATE groepen SET groepnaam=?,leden=?,locatie=? WHERE id= ?");
-    $stmt->bind_param('sssi', $groepennaam, $leden, $locatie, $id);
+public function groepWijzigen($id, $groepnaam, $leden, $locatie, $projectnaam) {
+    $stmt = $this->database->connection->prepare("UPDATE groepen SET groepnaam=?,leden=?,locatie=?,projectnaam=? WHERE id= ?");
+    $stmt->bind_param('ssssi', $groepnaam, $leden, $locatie, $projectnaam, $id);
     $stmt->execute();
-    header("location:../admin/groepen/");
-}
-
-// Updates a cleaner with password
-public function groepWijzigenMetWachtwoord($id, $groepennaam, $leden, $locatie, $project) {
-    $stmt = $this->database->connection->prepare("UPDATE groepen SET gebruikersnaam=?,wachtwoord=?,naam=?,achternaam=? WHERE id= ?");
-    $stmt->bind_param('ssssi', $groepennaam, $leden, $locatie, $project, $id);
-    $stmt->execute();
-    header("location:../admin/groepen/");
-}
-
-// Updates password
-public function wachtwoordWijzigen($id, $wachtwoord) {
-    $stmt = $this->database->connection->prepare("UPDATE groepen SET wachtwoord=? WHERE id= ?");
-    $stmt->bind_param('si', $wachtwoord, $id);
-    $stmt->execute();
-    header("location:../profile/");
+    header("location:groepen.php");
 }
 
 // Gets user based on the id
