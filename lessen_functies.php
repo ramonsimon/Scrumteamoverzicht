@@ -13,7 +13,7 @@ public function __construct(){
 }
 
 // Deletes a user 
-public function groepVerwijderen($id) {
+public function lesVerwijderen($id) {
     
     // $stmt2 = $this->database->connection->prepare("DELETE FROM opmerkingen WHERE opmerkingen.idgroepen= ?");
     // $stmt2->bind_param('i', $id);
