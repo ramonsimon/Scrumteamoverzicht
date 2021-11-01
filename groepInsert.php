@@ -1,5 +1,4 @@
 <?php
-
 // Pathprefix
 $pathprefix = '../../';
 
@@ -11,7 +10,7 @@ $pathprefix = '../../';
 include_once('groepen_functies.php');
 $groep = new Groep();
 
-// If submit is clicked add a user
+// If submit is clicked update the user
 if(isset($_POST['submit']))
 {    
     $groepnaam = $_POST['groepnaam'];
@@ -23,4 +22,4 @@ if(isset($_POST['submit']))
     header("location:fail.php");
     die;
 }
-?>
+
