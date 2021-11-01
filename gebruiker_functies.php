@@ -53,19 +53,19 @@ public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $ach
 }
 
 // Updates a cleaner
-public function gebruikerWijzigen($id, $gebruikersnaam, $naam, $achternaam) {
-    $stmt = $this->database->connection->prepare("UPDATE gebruikers SET gebruikersnaam=?,naam=?,achternaam=? WHERE id= ?");
-    $stmt->bind_param('sssi', $gebruikersnaam, $naam, $achternaam, $id);
+public function gebruikerWijzigen($id, $gebruikersnaam, $voornaam, $achternaam) {
+    $stmt = $this->database->connection->prepare("UPDATE gebruikers SET gebruikersnaam=?,voornaam=?,achternaam=? WHERE id= ?");
+    $stmt->bind_param('sssi', $gebruikersnaam, $voornaam, $achternaam, $id);
     $stmt->execute();
-    header("location:../admin/gebruikers/");
+    header("location:gebruikers.php");
 }
 
 // Updates a cleaner with password
-public function gebruikerWijzigenMetWachtwoord($id, $gebruikersnaam, $wachtwoord, $naam, $achternaam) {
-    $stmt = $this->database->connection->prepare("UPDATE gebruikers SET gebruikersnaam=?,wachtwoord=?,naam=?,achternaam=? WHERE id= ?");
-    $stmt->bind_param('ssssi', $gebruikersnaam, $wachtwoord, $naam, $achternaam, $id);
+public function gebruikerWijzigenMetWachtwoord($id, $gebruikersnaam, $wachtwoord, $voornaam, $achternaam) {
+    $stmt = $this->database->connection->prepare("UPDATE gebruikers SET gebruikersnaam=?,wachtwoord=?,voornaam=?,achternaam=? WHERE id= ?");
+    $stmt->bind_param('ssssi', $gebruikersnaam, $wachtwoord, $voornaam, $achternaam, $id);
     $stmt->execute();
-    header("location:../admin/gebruikers/");
+    header("location:gebruikers.php");
 }
 
 // Updates password
@@ -73,7 +73,7 @@ public function wachtwoordWijzigen($id, $wachtwoord) {
     $stmt = $this->database->connection->prepare("UPDATE gebruikers SET wachtwoord=? WHERE id= ?");
     $stmt->bind_param('si', $wachtwoord, $id);
     $stmt->execute();
-    header("location:../profile/");
+    header("location:gebruikers.php");
 }
 
 // Gets user based on the id
