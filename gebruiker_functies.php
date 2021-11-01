@@ -45,11 +45,11 @@ public function schoonmakersOphalen() {
 }
 
 // Adds a cleaner
-public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $naam, $achternaam) {
-    $stmt = $this->database->connection->prepare("INSERT INTO gebruikers (gebruikersnaam,wachtwoord,naam,achternaam) VALUES (?,?,?,?)");
-    $stmt->bind_param('ssss', $gebruikersnaam, $wachtwoord, $naam, $achternaam);
+public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $achternaam) {
+    $stmt = $this->database->connection->prepare("INSERT INTO gebruikers (gebruikersnaam,wachtwoord,voornaam,achternaam) VALUES (?,?,?,?)");
+    $stmt->bind_param('ssss', $gebruikersnaam, $wachtwoord, $voornaam, $achternaam);
     $stmt->execute();
-    header("location:../admin/gebruikers/");
+    header("location:gebruikers.php");
 }
 
 // Updates a cleaner
