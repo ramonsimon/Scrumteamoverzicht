@@ -110,9 +110,7 @@
                 <
             </div>
         </div>
-    </nav>a class="text-white  hover:text-gray-400 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-    href="lessen.php">
-    Lessen
+    </nav>
     </a>
 </div>
 </body>
