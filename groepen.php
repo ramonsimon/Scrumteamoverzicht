@@ -109,7 +109,7 @@ $groep->groepenOphalen();
 								<form class="inline" method="POST" action="groepDelete.php">
 									<button name="verwijderen" value="'.$item['id'].'" type="submit"><i class="far fa-trash-alt"></i></button> 
 								</form>
-								<a href="wijzigengebruiker.php?id='.$item['id'].'" type="submit"><i class="fas fa-edit"></i></a> 
+								<a href="wijzigengroep.php?id='.$item['id'].'" type="submit"><i class="fas fa-edit"></i></a> 
 							</td>
 					</tr>';} ?>
 				</tbody>
