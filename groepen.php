@@ -18,12 +18,11 @@
 
 <br>
 <h1 class="text-3xl text-center">Groepen</h1>
-
+<div class="flex">		
+	<div class="flex-initial"><a href="aanmakengroep.php" class="btn-primary"><i class="fas fa-plus"></i> Toevoegen</a></div>
+</div>
 <div class="pagewrapper">
-		<div class="flex">
-			<!-- <div class="flex-grow"><h1 class="h1">Gebruikers</h1></div>
-			<div class="flex-initial"><a href="aanmaken.php" class="btn-primary"><i class="fas fa-plus"></i> Toevoegen</a></div> -->
-		</div>
+		
 		<div class="py-4">
 			<div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
 				<div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
