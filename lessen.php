@@ -1,3 +1,20 @@
+<?php
+
+// Pathprefix
+$pathprefix = '../../';
+
+// request gebruikers
+include_once('lessen_functies.php');
+
+// Start session
+session_start();
+
+// Requests users
+$les = new Les();
+$les->lessenOphalen();
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -6,7 +23,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css">
 	<link href="src/tailwind.css" rel="stylesheet">
-	<link href="assets/fontawesome/css/fontawesome.css" rel="stylesheet">
+	<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
 	<link href="assets/fontawesome/css/solid.css" rel="stylesheet">
 	<script type="text/javascript" src="assets/navbar.js"></script>
     <?php include 'navbarvoorbeeld.php' ?>
@@ -30,25 +47,73 @@
 						<thead>
 							<tr>
 								<th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-									Gebruikersnaam
+									Lesnaam
 								</th>
 								<th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-									Voornaam
+									Lokaal
 								</th>
 								<th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-									Achternaam
-								</th>
-								<th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-									Wachtwoord
+									Startijd
 								</th>
                                 <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-									Rol
+									Eindtijd
 								</th>
 								<th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
 									Acties
 								</th>
 							</tr>
 						</thead>
+
+						<tbody>
+					<tr>
+						<?php 
+
+						// Requests all groups
+						$lessen_result = $les->lessenOphalen();
+
+						// Loops through groups
+						foreach ($lessen_result as $item)
+						{
+
+							echo 
+							"
+							<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+								<p class='text-gray-900 whitespace-no-wrap'>
+								"; echo $item['lesnaam'];"
+								</p>
+							</td>";
+							echo 
+							"<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+								<p class='text-gray-900 whitespace-no-wrap'>
+									"; echo $item['lokaal'];"
+								</p>
+							</td>";
+
+							echo 
+							"<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+								<p class='text-gray-900 whitespace-no-wrap'>
+								"; echo $item['starttijd'];" 
+								</p>
+							</td>";
+
+							echo 
+							"<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+								<p class='text-gray-900 whitespace-no-wrap'>
+								"; echo $item['eindtijd'];" 
+								</p>
+							</td>";
+
+							echo 
+							'
+							<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+								<form class="inline" method="POST" action="lesDelete.php">
+									<button name="verwijderen" value="'.$item['id'].'" type="submit"><i class="far fa-trash-alt"></i></button> 
+								</form>
+								<a href="wijzigenles.php?id='.$item['id'].'" type="submit"><i class="fas fa-edit"></i></a> 
+							</td>
+					</tr>';} ?>
+				</tbody>
+						
 
 </body>        
 
