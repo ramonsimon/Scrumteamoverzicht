@@ -53,9 +53,9 @@ public function lesToevoegen($lesnaam, $lokaal, $starttijd, $eindtijd) {
 }
 
 // Updates a cleaner
-public function groepWijzigen($id, $groepnaam, $leden, $locatie, $projectnaam) {
-    $stmt = $this->database->connection->prepare("UPDATE lessen SET groepnaam=?,leden=?,locatie=?,projectnaam=? WHERE id= ?");
-    $stmt->bind_param('ssssi', $groepnaam, $leden, $locatie, $projectnaam, $id);
+public function lesWijzigen($id, $lesnaam, $lokaal, $starttijd, $eindtijd) {
+    $stmt = $this->database->connection->prepare("UPDATE lessen SET lesnaam=?,lokaal=?,starttijd=?,eindtijd=? WHERE id= ?");
+    $stmt->bind_param('ssssi', $lesnaam, $lokaal, $starttijd, $eindtijd, $id);
     $stmt->execute();
     header("location:lessen.php");
 }
