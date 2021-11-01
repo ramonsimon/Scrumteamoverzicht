@@ -33,14 +33,12 @@ if($num>0){
         // this will make $row['name'] to
         // just $name only
         extract($row);
-
         $product_item=array(
             "id" => $id,
-            "name" => $name,
-            "description" => html_entity_decode($description),
-            "price" => $price,
-            "category_id" => $category_id,
-            "category_name" => $category_name
+            "gebruikersnaam" => $gebruikersnaam,
+            "voornaam" => $voornaam,
+            "achternaam" => $achternaam,
+            "rol" => $rol
         );
 
         array_push($products_arr["records"], $product_item);
