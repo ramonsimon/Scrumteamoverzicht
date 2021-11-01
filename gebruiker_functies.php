@@ -15,13 +15,13 @@ public function __construct(){
 // Deletes a user 
 public function gebruikerVerwijderen($id) {
     
-    $stmt2 = $this->database->connection->prepare("DELETE FROM opmerkingen WHERE opmerkingen.idGebruikers= ?");
-    $stmt2->bind_param('i', $id);
-    $stmt2->execute(); 
+    // $stmt2 = $this->database->connection->prepare("DELETE FROM opmerkingen WHERE opmerkingen.idGebruikers= ?");
+    // $stmt2->bind_param('i', $id);
+    // $stmt2->execute(); 
 
-    $stmt3 = $this->database->connection->prepare("DELETE FROM planning WHERE planning.idGebruikers= ?");
-    $stmt3->bind_param('i', $id);
-    $stmt3->execute(); 
+    // $stmt3 = $this->database->connection->prepare("DELETE FROM planning WHERE planning.idGebruikers= ?");
+    // $stmt3->bind_param('i', $id);
+    // $stmt3->execute(); 
 
     $stmt = $this->database->connection->prepare("DELETE FROM gebruikers WHERE id= ?");
     $stmt->bind_param('i', $id);
