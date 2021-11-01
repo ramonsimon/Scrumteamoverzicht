@@ -7,10 +7,10 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 // get database connection
-include_once '../config/database.php';
+include_once 'database.php';
 
 // instantiate product object
-include_once '../objects/product.php';
+include_once 'product.php';
 
 $database = new Database();
 $db = $database->getConnection();
@@ -22,18 +22,17 @@ $data = json_decode(file_get_contents("php://input"));
 
 // make sure data is not empty
 if(
-    !empty($data->name) &&
-    !empty($data->price) &&
-    !empty($data->description) &&
-    !empty($data->category_id)
+    !empty($data->gebruikersnaam) &&
+    !empty($data->voornaam) &&
+    !empty($data->achternaam) &&
+    !empty($data->rol)
 ){
 
     // set product property values
-    $product->name = $data->name;
-    $product->price = $data->price;
-    $product->description = $data->description;
-    $product->category_id = $data->category_id;
-    $product->created = date('Y-m-d H:i:s');
+    $product->gebruikersnaam = $data->gebruikersnaam;
+    $product->voornaam = $data->voornaam;
+    $product->achternaam = $data->achternaam;
+    $product->rol = $data->rol;
 
     // create the product
     if($product->create()){
