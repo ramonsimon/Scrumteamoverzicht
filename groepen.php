@@ -106,7 +106,7 @@ $groep->groepenOphalen();
 							echo 
 							'
 							<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-								<form class="inline" method="POST" action="gebruikerDelete.php">
+								<form class="inline" method="POST" action="groepDelete.php">
 									<button name="verwijderen" value="'.$item['id'].'" type="submit"><i class="far fa-trash-alt"></i></button> 
 								</form>
 								<a href="wijzigengebruiker.php?id='.$item['id'].'" type="submit"><i class="fas fa-edit"></i></a> 
