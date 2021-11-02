@@ -17,7 +17,14 @@ $check->checkLogin(1);
 // Requests users
 $gebruikers = new Gebruiker();
 $gebruikers->gebruikersOphalen();
+$method = "GET";
+$url = "http://localhost/Scrumteamoverzicht999/api/product/read.php";
 
+// Method: POST, PUT, GET etc
+// Data: array("param" => "value") ==> index.php?param=value
+
+$result = json_decode($gebruikers->CallAPI($method, $url), true);
+print_r($result);
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +40,6 @@ $gebruikers->gebruikersOphalen();
 	<script type="text/javascript" src="assets/navbar.js"></script>
     <?php include 'navbarvoorbeeld.php' ?>
 </head>
-
 
 
 <body>
@@ -94,7 +100,7 @@ $gebruikers->gebruikersOphalen();
 								"; echo $item['gebruikersnaam'];"
 								</p>
 							</td>";
-							echo 
+							echo
 							"<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
 								<p class='text-gray-900 whitespace-no-wrap'>
 									"; echo $item['voornaam'];"

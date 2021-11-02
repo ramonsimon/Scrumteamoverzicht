@@ -26,13 +26,41 @@ if(isset($_POST['submit']))
     $voornaam = $_POST['voornaam'];
     $achternaam = $_POST['achternaam'];
     $wachtwoord = $_POST['wachtwoord'];
-    if (isset($wachtwoord) && $wachtwoord != '') {
-        // Password hash
-        $wachtwoord = password_hash($_POST['wachtwoord'], PASSWORD_DEFAULT);
-        $gebruiker->gebruikerWijzigenMetWachtwoord($id, $gebruikersnaam, $wachtwoord, $voornaam, $achternaam);
-    } else {
-        $gebruiker->gebruikerWijzigen($id, $gebruikersnaam, $voornaam, $achternaam);
-    }
+
+
+    $url = 'http://localhost/Scrumteamoverzicht999/api/product/create.php';
+
+    $data = array(
+        'gebruikersnaam' => $gebruikersnaam,
+        'voornaam' => $voornaam,
+        'achternaam' => $achternaam,
+        'wachtwoord' => $wachtwoord,
+        'rol' => '1'
+    );
+
+    $body = json_encode($data);
+
+    $ch = curl_init($url);
+
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $result = curl_exec($ch);
+
+    curl_close($ch);
+
+    print_r($result);
+
+
+
+//    if (isset($wachtwoord) && $wachtwoord != '') {
+//        // Password hash
+//        $wachtwoord = password_hash($_POST['wachtwoord'], PASSWORD_DEFAULT);
+//        $gebruiker->gebruikerWijzigenMetWachtwoord($id, $gebruikersnaam, $wachtwoord, $voornaam, $achternaam);
+//    } else {
+//        $gebruiker->gebruikerWijzigen($id, $gebruikersnaam, $voornaam, $achternaam);
+//    }
 } else {
     header("location:fail");
     die;

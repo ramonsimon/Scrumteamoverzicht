@@ -25,6 +25,7 @@ if(
     !empty($data->gebruikersnaam) &&
     !empty($data->voornaam) &&
     !empty($data->achternaam) &&
+    !empty($data->wachtwoord) &&
     !empty($data->rol)
 ){
 
@@ -32,6 +33,7 @@ if(
     $product->gebruikersnaam = $data->gebruikersnaam;
     $product->voornaam = $data->voornaam;
     $product->achternaam = $data->achternaam;
+    $product->wachtwoord = $data->wachtwoord;
     $product->rol = $data->rol;
 
     // create the product
