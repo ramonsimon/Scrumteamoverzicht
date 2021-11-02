@@ -1,7 +1,12 @@
 <?php
 
-//start session
+// Start session
 session_start();
+
+//// Check if user should be able to access this page
+include_once('loginCheck.php');
+$check = new LoginCheck();
+$check->checkLogin(1);
 
 ?>
 

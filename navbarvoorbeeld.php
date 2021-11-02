@@ -42,6 +42,10 @@
                                href="lessen.php">
                                 Lessen
                             </a>
+                            <a class="text-white  hover:text-gray-400 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                               href="logout.php">
+                                Loguit
+                            </a>
                         </div>
                     </div>
                 </div>
