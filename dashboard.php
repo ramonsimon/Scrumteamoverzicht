@@ -38,14 +38,8 @@ $groep->groepenOphalen();
     <br>
         <h1 class="text-3xl text-center">Goeiemorgenmiddagavond</h1>
     <br>
-
-    <div class="pagewrapper">
-		
-<div class="pagewrapper">
-		
 		<div class="py-4">
-			<div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-				<div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+			<div class="py-4 overflow-x-auto flex flex-wrap">
 					
 						<?php 
 
@@ -57,10 +51,14 @@ $groep->groepenOphalen();
 						{
 							// print_r($item);
 							echo '
-							<div class="grid place-items-center h-60 w-6/12 text-white bg-blue-700 rounded-3xl">
+							<div class="w-1/4 h-48 bg-blue">
+							<div class="mx-2 my-2 place-items-center text-white bg-blue-700 rounded-3xl">
 							<h1 class="text-3xl text-center">'.$item['groepnaam'].'</h1>
+							<br>
 							<h1 class="text-center">'.$item['leden'].'</h1>
+							<br>
 							<h1 class="text-center">'.$item['locatie'].'</h1>
+							</div>
 							</div>
 							';
 
@@ -89,6 +87,8 @@ $groep->groepenOphalen();
 					// 		'
 					// ';
 					} ?>
+					</div>
+				</div>
 
 </body>        
 
