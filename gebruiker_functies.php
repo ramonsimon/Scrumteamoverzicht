@@ -47,7 +47,7 @@ public function schoonmakersOphalen() {
 // Adds a cleaner
 public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $achternaam) {
 
-    $url = 'http://localhost/Scrumteamoverzicht999/api/product/create.php';
+    $url = 'http://localhost/scrumteamdashboard/Scrumteamoverzichtapi/product/create.php';
 
     $data = array(
         'gebruikersnaam' => $gebruikersnaam,

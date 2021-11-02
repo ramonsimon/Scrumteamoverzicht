@@ -47,13 +47,13 @@
             }else
             {
                 // Error message
-                $_SESSION['message'] = '<i class="fas fa-exclamation-circle"></i> Incorrecte gebruikersnaam';
+                $_SESSION['message'] = '<i class="fas fa-exclamation-circle"></i> Incorrecte gebruikersnaam of wachtwoord';
                 header("Location:index.php");
             }
         }else
         {   
             // Error message
-            $_SESSION['message'] = '<i class="fas fa-exclamation-circle"></i> Incorrecte wachtwoord';
+            $_SESSION['message'] = '<i class="fas fa-exclamation-circle"></i> Incorrecte gebruikersnaam of wachtwoord';
             header("Location:index.php");
         }
     }

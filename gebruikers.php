@@ -18,7 +18,7 @@ $check->checkLogin(1);
 $gebruikers = new Gebruiker();
 $gebruikers->gebruikersOphalen();
 $method = "GET";
-$url = "http://localhost/Scrumteamoverzicht999/api/product/read.php";
+$url = "http://localhost/scrumteamdashboard/Scrumteamoverzicht/api/product/read.php";
 
 // Method: POST, PUT, GET etc
 // Data: array("param" => "value") ==> index.php?param=value

@@ -10,9 +10,9 @@ include_once('groepen_functies.php');
 session_start();
 
 //// Check if user should be able to access this page
-//include_once('loginCheck.php');
-//$check = new LoginCheck();
-//$check->checkLogin(1);
+include_once('loginCheck.php');
+$check = new LoginCheck();
+$check->checkLogin(1);
 
 // Requests users
 $groep = new Groep();
@@ -46,9 +46,7 @@ $groep->groepenOphalen();
 		<div class="py-4">
 			<div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
 				<div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
-					<table class="min-w-full leading-normal">
-						<tbody>
-					<tr>
+					
 						<?php 
 
 						// Requests all groups
@@ -57,32 +55,40 @@ $groep->groepenOphalen();
 						// Loops through groups
 						foreach ($groepen_result as $item)
 						{
+							// print_r($item);
+							echo '
+							<div class="grid place-items-center h-60 w-6/12 text-white bg-blue-700 rounded-3xl">
+							<h1 class="text-3xl text-center">'.$item['groepnaam'].'</h1>
+							<h1 class="text-center">'.$item['leden'].'</h1>
+							<h1 class="text-center">'.$item['locatie'].'</h1>
+							</div>
+							';
 
-							echo 
-							"
-							<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-								<p class='text-gray-900 whitespace-no-wrap'>
-								"; echo $item['groepnaam'];"
-								</p>
-							</td>";
-							echo 
-							"<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-								<p class='text-gray-900 whitespace-no-wrap'>
-									"; echo $item['leden'];"
-								</p>
-							</td>";
+					// 		echo 
+					// 		"
+					// 		<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+					// 			<p class='text-gray-900 whitespace-no-wrap'>
+					// 			"; echo $item['groepnaam'];"
+					// 			</p>
+					// 		</td>";
+					// 		echo 
+					// 		"<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+					// 			<p class='text-gray-900 whitespace-no-wrap'>
+					// 				"; echo $item['leden'];"
+					// 			</p>
+					// 		</td>";
 
-							echo 
-							"<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-								<p class='text-gray-900 whitespace-no-wrap'>
-								"; echo $item['locatie'];" 
-								</p>
-							</td>";
+					// 		echo 
+					// 		"<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+					// 			<p class='text-gray-900 whitespace-no-wrap'>
+					// 			"; echo $item['locatie'];" 
+					// 			</p>
+					// 		</td>";
 
-							echo 
-							'
-					</tr>';} ?>
-				</tbody>
+					// 		echo 
+					// 		'
+					// ';
+					} ?>
 
 </body>        
 
