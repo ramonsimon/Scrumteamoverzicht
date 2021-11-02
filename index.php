@@ -16,11 +16,12 @@ session_start();
 	<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
 	<link href="assets/fontawesome/css/solid.css" rel="stylesheet">
 	<script type="text/javascript" src="assets/navbar.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 	<div class="flex items-center justify-center m-6">
 		<div class="flex flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
-			<div class="self-center mb-2 text-xl font-semibold text-gray-600 sm:text-2xl dark:text-white">
+			<div class="text-center mb-2 text-xl font-semibold text-gray-600 sm:text-2xl dark:text-white">
 			<img src="FPlogo.png" alt="Logo" class="logo">
 				ScrumTeamDashboard
 			</div>
@@ -53,7 +54,7 @@ session_start();
 						}
 					?>
 					<div class="flex w-full">
-						<button type="submit" id='login' name="login" class="btn-primary">
+						<button class="btn btn-primary" type="submit" id='login' name="login">
 							Inloggen
 						</button>
 					</div>
