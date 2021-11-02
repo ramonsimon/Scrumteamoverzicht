@@ -46,9 +46,30 @@ public function schoonmakersOphalen() {
 
 // Adds a cleaner
 public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $achternaam) {
-    $stmt = $this->database->connection->prepare("INSERT INTO gebruikers (gebruikersnaam,wachtwoord,voornaam,achternaam) VALUES (?,?,?,?)");
-    $stmt->bind_param('ssss', $gebruikersnaam, $wachtwoord, $voornaam, $achternaam);
-    $stmt->execute();
+
+    $url = 'http://localhost/Scrumteamoverzicht999/api/product/create.php';
+
+    $data = array(
+        'gebruikersnaam' => $gebruikersnaam,
+        'voornaam' => $voornaam,
+        'achternaam' => $achternaam,
+        'wachtwoord' => $wachtwoord,
+        'rol' => '1'
+    );
+
+    $body = json_encode($data);
+
+    $ch = curl_init($url);
+
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $result = curl_exec($ch);
+
+    curl_close($ch);
+
+    print_r($result);
     header("location:gebruikers.php");
 }
 
@@ -84,6 +105,42 @@ public function gebruikerOphalen($id) {
     $result = $stmt->get_result();
     return $result;
 }
+
+// Method: POST, PUT, GET etc
+// Data: array("param" => "value") ==> index.php?param=value
+
+  public function CallAPI($method, $url, $data = false){
+        $curl = curl_init();
+
+        switch ($method)
+        {
+            case "POST":
+                curl_setopt($curl, CURLOPT_POST, 1);
+
+                if ($data)
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                break;
+            case "PUT":
+                curl_setopt($curl, CURLOPT_PUT, 1);
+                break;
+            default:
+                if ($data)
+                    $url = sprintf("%s?%s", $url, http_build_query($data));
+        }
+
+        // Optional Authentication:
+        curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($curl, CURLOPT_USERPWD, "username:password");
+
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+
+        $result = curl_exec($curl);
+
+        curl_close($curl);
+
+        return $result;
+    }
 
 }
 ?>
