@@ -9,6 +9,11 @@ include_once('groepen_functies.php');
 // Start session
 session_start();
 
+//// Check if user should be able to access this page
+include_once('loginCheck.php');
+$check = new LoginCheck();
+$check->checkLogin(1);
+
 // Requests users
 $groep = new Groep();
 $groep->groepenOphalen();
@@ -59,7 +64,7 @@ $groep->groepenOphalen();
                                                         </div>
                                                         <div class="mt-1 focus:ring-black-500 focus:border-black-500 block w-full shadow-sm sm:text-sm border-black-900 rounded-md">
                                                             <div class="flex-inherit w-60"><label class="font-semibold leading-10">Project:</label></div>
-                                                            <div class="flex-grow"><input type="text" name="project" class="input" required /></div>
+                                                            <div class="flex-grow"><input type="text" name="projectnaam" class="input" required /></div>
                                                         </div>
                                                     </div>
                                                 </div>

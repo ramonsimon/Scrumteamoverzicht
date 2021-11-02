@@ -6,6 +6,14 @@ $pathprefix = '../../';
 // $gebruikers = new Gebruiker();
 // $gebruikers->gebruikersOphalen();
 
+// Start session
+session_start();
+
+//// Check if user should be able to access this page
+include_once('loginCheck.php');
+$check = new LoginCheck();
+$check->checkLogin(1);
+
 // Includes user class
 include_once('groepen_functies.php');
 $groep = new Groep();

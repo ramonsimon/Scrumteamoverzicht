@@ -10,6 +10,14 @@ if (isset($_GET['id'])) {
     $id = null;
 }
 
+// Start session
+session_start();
+
+//// Check if user should be able to access this page
+include_once('loginCheck.php');
+$check = new LoginCheck();
+$check->checkLogin(1);
+
 // request gebruikers
 include_once('groepen_functies.php');
 
