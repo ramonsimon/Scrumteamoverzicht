@@ -68,8 +68,23 @@ foreach ($groep as $singleGroep){
                 </div>
                 <div class="flex flex-wrap my-4">
                     <div class="flex-inherit w-60"><label class="font-semibold leading-10">Locatie:</label></div>
-                    <div class="flex-grow"><input type="text" value="'.  $groep['locatie'] .'" name="locatie" class="input" required /></div>
+                    <div>
+                    <select name="locatie" class="form-control">
+                    <option selected="true" disabled="disabled" value="'.  $groep['locatie'] .'">'.  $groep['locatie'] .'</option>
+                        <option value="Tafel 1">Tafel 1</option>
+                        <option value="Tafel 2">Tafel 2</option>
+                        <option value="Tafel 3">Tafel 3</option>
+                        <option value="Tafel 4">Tafel 4</option>
+                        <option value="Cabine 1">Cabine 1</option>
+                        <option value="Cabine 2">Cabine 2</option>
+                        <option value="Cabine 3">Cabine 3</option>
+                        <option value="Cabine 4">Cabine 4</option>
+                        <option value="C104">C104</option>
+                        <option value="Kantine">Kantine</option>
+                    </select>
                 </div>
+                </div>
+
                 <div class="flex flex-wrap my-4">
                     <div class="flex-inherit w-60"><label class="font-semibold leading-10">Project:</label></div>
                     <div class="flex-grow"><input type="text" value="'.  $groep['projectnaam'] .'" name="projectnaam" class="input" required /></div>
