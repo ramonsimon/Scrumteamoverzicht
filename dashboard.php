@@ -24,13 +24,13 @@ $groep->groepenOphalen();
 <html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="dashboard.css">
-    <link href="src/tailwind.css" rel="stylesheet">
-    <link href="assets/fontawesome/css/fontawesome.css" rel="stylesheet">
-    <link href="assets/fontawesome/css/solid.css" rel="stylesheet">
-    <script type="text/javascript" src="assets/navbar.js"></script>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+	<link href="src/tailwind.css" rel="stylesheet">
+	<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+	<link href="assets/fontawesome/css/solid.css" rel="stylesheet">
+	<script type="text/javascript" src="assets/navbar.js"></script>
     <?php include 'navbarvoorbeeld.php' ?>
 </head>
 

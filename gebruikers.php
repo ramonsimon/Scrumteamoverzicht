@@ -24,7 +24,7 @@ $url = "http://localhost/scrumteamdashboard/Scrumteamoverzicht/api/product/read.
 // Data: array("param" => "value") ==> index.php?param=value
 
 $result = json_decode($gebruikers->CallAPI($method, $url), true);
-print_r($result);
+// print_r($result);
 ?>
 
 <!DOCTYPE html>
