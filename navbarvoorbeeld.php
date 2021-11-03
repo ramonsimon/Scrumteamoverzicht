@@ -104,7 +104,6 @@
                    href="groepen.php">
                     Groepen
                 </a>
-                <
             </div>
         </div>
     </nav>
