@@ -2,8 +2,9 @@
 
 // Incudes db
 require_once('dbConnection.php');
-class Gebruiker{
+require_once('api_url.php');
 
+class Gebruiker{
 private $database = [];
     
 
@@ -44,10 +45,11 @@ public function schoonmakersOphalen() {
     return $result;
 }
 
+
 // Adds a cleaner
 public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $achternaam) {
 
-    $url = 'http://localhost/scrumteamdashboard/Scrumteamoverzichtapi/product/create.php';
+    $url = $GLOBALS['host'] .'/api/product/create.php';
 
     $data = array(
         'gebruikersnaam' => $gebruikersnaam,
@@ -143,4 +145,3 @@ public function gebruikerOphalen($id) {
     }
 
 }
-?>
