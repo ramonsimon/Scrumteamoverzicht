@@ -22,19 +22,17 @@ $data = json_decode(file_get_contents("php://input"));
 
 // make sure data is not empty
 if(
-    !empty($data->gebruikersnaam) &&
-    !empty($data->voornaam) &&
-    !empty($data->achternaam) &&
-    !empty($data->wachtwoord) &&
-    !empty($data->rol)
+    !empty($data->groepnaam) &&
+    !empty($data->leden) &&
+    !empty($data->locatie) &&
+    !empty($data->projectnaam)
 ){
 
     // set product property values
-    $product->gebruikersnaam = $data->gebruikersnaam;
-    $product->voornaam = $data->voornaam;
-    $product->achternaam = $data->achternaam;
-    $product->wachtwoord = $data->wachtwoord;
-    $product->rol = $data->rol;
+    $product->groepnaam = $data->groepnaam;
+    $product->leden = $data->leden;
+    $product->locatie = $data->locatie;
+    $product->projectnaam = $data->projectnaam;
 
     // create the product
     if($product->create()){
@@ -58,7 +56,7 @@ if(
 }
 
 // tell the user data is incomplete
-else {
+else{
 
     // set response code - 400 bad request
     http_response_code(400);
@@ -66,4 +64,4 @@ else {
     // tell the user
     echo json_encode(array("message" => "Unable to create product. Data is incomplete."));
 }
-    ?>
+?>

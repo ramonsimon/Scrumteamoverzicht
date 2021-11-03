@@ -2,6 +2,7 @@
 
 // Incudes db
 require_once('dbConnection.php');
+require_once('api_url.php');
 class Groep{
 
 private $database = [];
@@ -46,9 +47,29 @@ public function schoonmakersOphalen() {
 
 // Adds a cleaner
 public function groepToevoegen($groepnaam, $leden, $locatie, $projectnaam) {
-    $stmt = $this->database->connection->prepare("INSERT INTO groepen (groepnaam,leden,locatie,projectnaam) VALUES (?,?,?,?)");
-    $stmt->bind_param('ssss', $groepnaam, $leden, $locatie, $projectnaam);
-    $stmt->execute();
+    $url = $GLOBALS['host'] . '/api/groepen/create.php';
+
+    $data = array(
+        'groepnaam' => $groepnaam,
+        'leden' => $leden,
+        'locatie' => $locatie,
+        'projectnaam' => $projectnaam
+    );
+
+    $body = json_encode($data);
+
+    $ch = curl_init($url);
+
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $result = curl_exec($ch);
+
+    curl_close($ch);
+
+    print_r($result);
+    header("location:gebruikers.php");
     header("location:groepen.php");
 }
 
