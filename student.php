@@ -100,6 +100,8 @@ $groep->groepenOphalen();
 							<h1 class="text-center">'.$item['leden'].'</h1>
 							<br>
 							<h1 class="text-center">'.$item['locatie'].'</h1>
+                            <h1 class="underline text-xs text-center"><a href="wijzigenlocatie.php?id='.$item['id'].'" type="submit">Wijzigen</i></a> </h1>
+                            <br>
 							</div>
 							</div>
 							';

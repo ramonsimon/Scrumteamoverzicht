@@ -81,6 +81,14 @@ public function groepWijzigen($id, $groepnaam, $leden, $locatie, $projectnaam) {
     header("location:groepen.php");
 }
 
+// Updates a cleaner
+public function locatieWijzigen($id, $locatie) {
+    $stmt = $this->database->connection->prepare("UPDATE groepen SET locatie=? WHERE id= ?");
+    $stmt->bind_param('si', $locatie, $id);
+    $stmt->execute();
+    header("location:student.php");
+}
+
 // Gets user based on the id
 public function groepOphalen($id) {
     $stmt = $this->database->connection->prepare('SELECT * FROM groepen WHERE id= ? LIMIT 1');
