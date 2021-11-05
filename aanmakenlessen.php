@@ -60,11 +60,11 @@ $les->lessenOphalen();
             </div>
             <div class="mt-1 focus:ring-black-500 focus:border-black-500 block w-full shadow-sm sm:text-sm border-black-900 rounded-md">
                 <div class="flex-inherit w-60"><label class="font-semibold leading-10">Starttijd:</label></div>
-                <div class="flex-grow"><input type="time" name="starttijd" class="input" required /></div>
+                <div class="flex-grow"><input type="time" name="starttijd" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
             </div>
             <div class="mt-1 focus:ring-black-500 focus:border-black-500 block w-full shadow-sm sm:text-sm border-black-900 rounded-md">
                 <div class="flex-inherit w-60"><label class="font-semibold leading-10">Eindtijd:</label></div>
-                <div class="flex-grow"><input type="time" name="eindtijd" class="input" required /></div>
+                <div class="flex-grow"><input type="time" name="eindtijd" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
             </div>
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
                                             <button type="submit" name="submit" value="Toevoegen" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
