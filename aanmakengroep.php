@@ -61,7 +61,7 @@ $groep->groepenOphalen();
                                                         <div class="from-group mb-3">
                                                         <div class="flex-inherit w-60"><label class="font-semibold leading-10" leading-10>Locatie:</label></div>
                                                         <div>
-                                                        <select name="locatie" id="locatie" required>
+                                                        <select name="locatie" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" id="locatie" required>
                                                             <option selected="true" disabled="disabled" value="">--Selecteer locatie--</option>
                                                             <option value="Tafel 1">Tafel 1</option>
                                                             <option value="Tafel 2">Tafel 2</option>

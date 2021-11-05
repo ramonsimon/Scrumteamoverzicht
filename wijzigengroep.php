@@ -60,16 +60,16 @@ foreach ($groep as $singleGroep){
                 <input type="text" value="'.  $id .'" name="id" class="hidden" required />
                 <div class="flex flex-wrap my-4">
                     <div class="flex-inherit w-60"><label class="font-semibold leading-10">Groepnaam:</label></div>
-                    <div class="flex-grow"><input type="text" value="'.  $groep['groepnaam'] .'" name="groepnaam" class="input" required /></div>
+                    <div class="flex-grow"><input type="text" value="'.  $groep['groepnaam'] .'" name="groepnaam" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
                 </div>
                 <div class="flex flex-wrap my-4">
                     <div class="flex-inherit w-60"><label class="font-semibold leading-10" leading-10>Leden:</label></div>
-                    <div class="flex-grow"><input type="text" value="'.  $groep['leden'] .'" name="leden" class="input" required /></div>
+                    <div class="flex-grow"><input type="text" value="'.  $groep['leden'] .'" name="leden" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
                 </div>
                 <div class="flex flex-wrap my-4">
                     <div class="flex-inherit w-60"><label class="font-semibold leading-10">Locatie:</label></div>
                     <div>
-                    <select name="locatie" class="form-control">
+                    <select name="locatie" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
                     <option selected="true" disabled="disabled" value="'.  $groep['locatie'] .'">'.  $groep['locatie'] .'</option>
                         <option value="Tafel 1">Tafel 1</option>
                         <option value="Tafel 2">Tafel 2</option>
@@ -87,9 +87,11 @@ foreach ($groep as $singleGroep){
 
                 <div class="flex flex-wrap my-4">
                     <div class="flex-inherit w-60"><label class="font-semibold leading-10">Project:</label></div>
-                    <div class="flex-grow"><input type="text" value="'.  $groep['projectnaam'] .'" name="projectnaam" class="input" required /></div>
+                    <div class="flex-grow"><input type="text" value="'.  $groep['projectnaam'] .'" name="projectnaam" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
                 </div>
-                <input type="submit" name="submit" value="Wijzigen" class="btn-success cursor-pointer mt-4">
+                <button type="submit" name="submit" value="Wijzigen" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Wijzigen
+                </button>
                 </form>
                 ';
             }else{
