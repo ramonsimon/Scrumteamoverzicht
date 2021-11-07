@@ -49,7 +49,7 @@ $result = json_decode($gebruikers->CallAPI($method, $url), true);
 
 <div class="pagewrapper">
 	<div class="flex">
-	<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><a href="aanmakengebruiker.php" class="btn-primary"><i class="fas fa-plus"></i> Toevoegen</a></button>
+        <a href="aanmakengebruiker.php" class="btn-primary"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-plus"></i> Toevoegen</button></a>
 	</div>
 	<div class="py-4">
 		<div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">

@@ -42,7 +42,7 @@ $groep->groepenOphalen();
 <h1 class="text-3xl text-center">Groepen</h1>
 <div class="flex">		
 <div class="flex">
-	<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><a href="aanmakengroep.php" class="btn-primary"><i class="fas fa-plus"></i> Toevoegen</a></button>
+    <a href="aanmakengroep.php" class="btn-primary"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-plus"></i> Toevoegen</button></a>
 	</div>
 </div>
 <div class="pagewrapper">
