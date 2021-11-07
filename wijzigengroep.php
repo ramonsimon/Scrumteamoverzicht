@@ -58,7 +58,7 @@ foreach ($groep as $singleGroep){
             if ($id != null){
                 echo '
                 <div class="flex flex-wrap mb-6">
-                    <div class="flex"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><a href="groepen.php" class="btn-primary"><i class="fas fa-arrow-left"></i> Terug</a></button></div>
+                <div class="flex"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><a href="groepen.php" class="btn-primary"><i class="fas fa-arrow-left"></i> Terug</a></button></div>
                 </div>
                 <form action="groepUpdate.php" method="post">
                 <input type="text" value="'.  $id .'" name="id" class="hidden" required />

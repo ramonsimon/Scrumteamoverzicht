@@ -34,6 +34,8 @@ $les->lessenOphalen();
 </head>
 
 <body>
+<br>
+<h1 class="text-3xl text-center">Les aanmaken</h1>
 <div class="hidden sm:block" aria-hidden="true">
   <div class="py-5">
     <div class="border-t border-gray-200"></div>
@@ -46,8 +48,9 @@ $les->lessenOphalen();
                                 <div class="col-span-6 sm:col-span-3">
                                     <div class="pagewrapper">
                                         <div class="flex flex-wrap mb-6">
-            <div class="h-10 flex-0 sm:flex-initial mr-6"><a class="btn-primary" href="lessen.php"><i class="fas fa-arrow-left"></i> Terug</a></div>
-			<div class="h-10 leading-10 flex-0 sm:flex-grow mt-4 sm:mt-0"><h1 class="leading-6">Les aanmaken</h1></div>
+            <div class="flex flex-wrap mb-6">
+                <div class="flex"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><a href="lessen.php" class="btn-primary"><i class="fas fa-arrow-left"></i> Terug</a></button></div>
+                </div>
 		</div>
     <form action="lesInsert.php" method="post">
             <div class="mt-1 focus:ring-black-500 focus:border-black-500 block w-full shadow-sm sm:text-sm border-black-900 rounded-md">
