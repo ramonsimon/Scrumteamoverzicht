@@ -36,7 +36,7 @@ if(
     $product->wachtwoord = $data->wachtwoord;
     $product->rol = $data->rol;
 
-    // create the product
+    // create the product    
     if($product->create()){
 
         // set response code - 201 created
