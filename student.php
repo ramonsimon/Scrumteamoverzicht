@@ -1,5 +1,7 @@
 <?php
 
+$_SESSION['id'] = 10;
+
 // Pathprefix
 $pathprefix = '../../';
 
@@ -84,27 +86,56 @@ $groep->groepenOphalen();
 			<div class="py-4 overflow-x-auto flex flex-wrap">
 					
 						<?php 
+                        
 
 						// Requests all groups
-						$groepen_result = $groep->groepenOphalen();
+						$groepen_result = $groep->groepenOphalenGebruiker($_SESSION['id']);
 
 						// Loops through groups
 						foreach ($groepen_result as $item)
 						{
+                            if(isset($_POST['setVraagNull']))
+                        {
+                            $groep->updateVraagNull($item['groepID']);
+                        }
+                        elseif(isset($_POST['setVraag'])){
+                            $groep->updateVraag($item['groepID']);
+                        }
+
+                            $colorItem = $groep->getStatus($item['groepID']);
+                            ($colorItem['vraag'] == 1) ? $color = "red" : $color = "blue";
 							// print_r($item);
-							echo '
-							<div class="w-1/4 h-48 bg-blue">
-							<div class="mx-2 my-2 place-items-center text-white bg-blue-700 rounded-3xl">
-							<h1 class="text-3xl text-center">'.$item['groepnaam'].'</h1>
+							$data = '
+							<div class="w-1/4 h-auto '.'bg-blue">
+							<div class="mx-2 my-2 place-items-center text-white bg-'.$color.'-700 rounded-3xl">
+                            <h1  class="text-3xl text-center">'.$item['groepnaam'].'</h1>
 							<br>
-							<h1 class="text-center">'.$item['leden'].'</h1>
-							<br>
-							<h1 class="text-center">'.$item['locatie'].'</h1>
-                            <h1 class="underline text-xs text-center"><a href="wijzigenlocatie.php?id='.$item['id'].'" type="submit">Wijzigen</i></a> </h1>
-                            <br>
+                            '; $teamLeden = $groep->getGebruikersBijGroep($item['groepID']);
+                            foreach($teamLeden as $leden){
+                                $data .= '<h1 class="text-center">'. $leden['voornaam'] . ' ' . $leden['achternaam'] . '</h1>
+                                '; 
+                            }
+                            echo '<br>';
+                            $data .='<br><h1 class="text-center">'.$item['locatie'].'</h1>
+                            <h1 class="underline text-xs text-center"><a href="wijzigenlocatie.php?id='.$item['groepID'].'" type="submit">Wijzigen</i></a> </h1><br>
+                            <div class="flex flex-row justify-center">
+                            <form class="inline" name="vraag" method="POST" action="">
+                            <div><button type="submit" name="setVraagNull" value="Vraag afmelden"><i class="fas fa-check"></i> Vraag afmelden</button></div>
+                            <div><button type="submit" name="setVraag" value="Stel vraag"><i class="fas fa-question"></i> Stel vraag</button></div>
+                            </form>
+                            </div>
+                            </div>
+                          </div>
+                         
+                                </div>
+                                </div>
 							</div>
-							</div>
+                            
 							';
+
+                            
+
+                            echo $data;              
 					} ?>
 					</div>
 				</div>

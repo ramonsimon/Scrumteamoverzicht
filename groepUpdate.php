@@ -23,10 +23,10 @@ if(isset($_POST['submit']))
 {    
     $id = $_POST['id'];
     $groepnaam = $_POST['groepnaam'];
-    $leden = $_POST['leden'];
+    // $leden = $_POST['leden'];
     $locatie = $_POST['locatie'];
     $projectnaam = $_POST['projectnaam'];
-    $groep->groepWijzigen($id, $groepnaam, $leden, $locatie, $projectnaam);
+    $groep->groepWijzigen($id, $groepnaam, $locatie, $projectnaam);
 } else {
     header("location:fail.php");
     die;

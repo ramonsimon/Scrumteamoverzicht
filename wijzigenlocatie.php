@@ -24,7 +24,7 @@ include_once('groepen_functies.php');
 $groep = new Groep();
 
 // Gets user based on id
-$groep = $groep->groepOphalen($id);
+$groep = $groep->groepOphalen(1);
 
 // Loops through the user
 foreach ($groep as $singleGroep){

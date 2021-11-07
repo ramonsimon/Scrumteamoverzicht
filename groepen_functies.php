@@ -37,6 +37,44 @@ public function groepenOphalen() {
     return $result;
 }
 
+public function groepenOphalenGebruiker($gebruikerID){
+
+    $stmt = $this->database->connection->prepare('SELECT groepen.id as groepID, groepnaam, locatie, projectnaam, voornaam, achternaam FROM groepen INNER JOIN gebruikers ON gebruikers.groepid = groepen.id WHERE gebruikers.id = ?');
+    $stmt->bind_param('i', $gebruikerID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result;
+}
+
+public function getStatus($groepID){
+    $stmt = $this->database->connection->prepare('SELECT vraag FROM groepen WHERE id = ? LIMIT 1');
+    $stmt->bind_param('i', $groepID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $total = $result->fetch_assoc();
+    return $total; 
+}
+
+public function getGebruikersBijGroep($groepID){
+    $stmt = $this->database->connection->prepare('SELECT voornaam, achternaam FROM gebruikers WHERE groepid = ?');
+    $stmt->bind_param('i', $groepID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result; 
+}
+
+public function updateVraag($groepID){
+    $stmt = $this->database->connection->prepare('UPDATE groepen SET vraag = 1 WHERE id =?');
+    $stmt->bind_param('i',$groepID);
+    $stmt->execute();
+}
+
+public function updateVraagNull($groepID){
+    $stmt = $this->database->connection->prepare('UPDATE groepen SET vraag = 0 WHERE id =?');
+    $stmt->bind_param('i',$groepID);
+    $stmt->execute();
+}
+
 // Gets all cleaners
 public function schoonmakersOphalen() {
     $stmt = $this->database->connection->prepare('SELECT * FROM groepen WHERE rol = 0');
@@ -74,9 +112,9 @@ public function groepToevoegen($groepnaam, $leden, $locatie, $projectnaam) {
 }
 
 // Updates a cleaner
-public function groepWijzigen($id, $groepnaam, $leden, $locatie, $projectnaam) {
-    $stmt = $this->database->connection->prepare("UPDATE groepen SET groepnaam=?,leden=?,locatie=?,projectnaam=? WHERE id= ?");
-    $stmt->bind_param('ssssi', $groepnaam, $leden, $locatie, $projectnaam, $id);
+public function groepWijzigen($id, $groepnaam, $locatie, $projectnaam) {
+    $stmt = $this->database->connection->prepare("UPDATE groepen SET groepnaam=?,locatie=?,projectnaam=? WHERE id= ?");
+    $stmt->bind_param('sssi', $groepnaam, $locatie, $projectnaam, $id);
     $stmt->execute();
     header("location:groepen.php");
 }
