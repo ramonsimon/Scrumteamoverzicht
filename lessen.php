@@ -42,7 +42,7 @@ $les->lessenOphalen();
 <h1 class="text-3xl text-center">Lessen</h1>
 <div class="flex">		
 <div class="flex">
-	<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><a href="aanmakengebruiker.php" class="btn-primary"><i class="fas fa-plus"></i> Toevoegen</a></button>
+	<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><a href="aanmakenlessen.php" class="btn-primary"><i class="fas fa-plus"></i> Toevoegen</a></button>
 	</div>
 </div>
 <div class="pagewrapper">

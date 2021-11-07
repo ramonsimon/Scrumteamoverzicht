@@ -48,13 +48,17 @@ foreach ($groep as $singleGroep){
 </head>
 
 <body>
-    <div class="pagewrapper">
+<br>
+<h1 class="text-3xl text-center">Groepen wijzigen</h1>
+    <div class="mt-5 md:mt-0 md:col-span-2">
+        <div class="shadow overflow-hidden sm:rounded-md">
+            <div class="px-4 py-5 bg-white sm:p-6">
+                <div class="pagewrapper">
         <?php
             if ($id != null){
                 echo '
                 <div class="flex flex-wrap mb-6">
-                    <div class="h-10 flex-0 sm:flex-initial mr-6"><a class="btn-primary" href="groepen.php"><i class="fas fa-arrow-left"></i> Terug</a></div>
-                <div class="h-10 leading-10 flex-0 sm:flex-grow mt-4 sm:mt-0"><h1 class="leading-6">Gebruiker wijzigen</h1></div>
+                    <div class="flex"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><a href="groepen.php" class="btn-primary"><i class="fas fa-arrow-left"></i> Terug</a></button></div>
                 </div>
                 <form action="groepUpdate.php" method="post">
                 <input type="text" value="'.  $id .'" name="id" class="hidden" required />
