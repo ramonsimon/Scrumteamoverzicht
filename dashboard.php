@@ -40,7 +40,7 @@ $groep->groepenOphalen();
 		<div class="py-4">
 			<div class="py-4 overflow-x-auto flex flex-wrap">
 					
-						<?php 
+						<?php
 
 						// Requests all groups
 						$groepen_result = $groep->groepenOphalen();
@@ -48,13 +48,16 @@ $groep->groepenOphalen();
 						// Loops through groups
 						foreach ($groepen_result as $item)
 						{
+                            ($item['vraag'] == 1) ? $color = "red" : $color = "blue";
+
+
 							// print_r($item);
 							echo '
 							<div class="w-1/4 h-48 bg-blue">
-							<div class="mx-2 my-2 place-items-center text-white bg-blue-700 rounded-3xl">
+							<div class="mx-2 my-2 place-items-center text-white bg-' . $color . '-700 rounded-3xl">
 							<h1 class="text-3xl text-center">'.$item['groepnaam'].'</h1>
 							<br>
-							<h1 class="text-center">'.$item['leden'].'</h1>
+					
 							<br>
 							<h1 class="text-center">'.$item['locatie'].'</h1>
 							</div>
