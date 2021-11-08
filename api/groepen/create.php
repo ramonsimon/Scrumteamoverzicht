@@ -23,14 +23,12 @@ $data = json_decode(file_get_contents("php://input"));
 // make sure data is not empty
 if(
     !empty($data->groepnaam) &&
-    !empty($data->leden) &&
     !empty($data->locatie) &&
     !empty($data->projectnaam)
 ){
 
     // set product property values
     $product->groepnaam = $data->groepnaam;
-    $product->leden = $data->leden;
     $product->locatie = $data->locatie;
     $product->projectnaam = $data->projectnaam;
 

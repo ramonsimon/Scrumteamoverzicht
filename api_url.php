@@ -1,4 +1,4 @@
 <?php
 
- $host = 'http://localhost/Scrumteamoverzicht';
+ $host = 'http://localhost/scrumteamdashboard/Scrumteamoverzicht/';
 

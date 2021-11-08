@@ -57,10 +57,6 @@ $groep->groepenOphalen();
                                                             <div class="flex-inherit w-60"><label class="font-semibold leading-10">Groepnaam:</label></div>
                                                             <div class="flex-grow"><input type="text" name="groepnaam" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
                                                         </div>
-                                                        <div class="mt-1 focus:ring-black-500 focus:border-black-500 block w-full shadow-sm sm:text-sm border-black-900 rounded-md">
-                                                            <div class="flex-inherit w-60"><label class="font-semibold leading-10" leading-10>Leden:</label></div>
-                                                            <div class="flex-grow"><input type="text" name="leden" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
-                                                        </div>
                                                         <div class="from-group mb-3">
                                                         <div class="flex-inherit w-60"><label class="font-semibold leading-10" leading-10>Locatie:</label></div>
                                                         <div>
