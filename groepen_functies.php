@@ -37,6 +37,14 @@ public function groepenOphalen() {
     return $result;
 }
 
+// Gets all users
+public function groepenOphalen2() {
+    $stmt = $this->database->connection->prepare('SELECT groepen.id as groepID, id, groepnaam, locatie, projectnaam, vraag FROM groepen');
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result;
+}
+
 public function groepenOphalenGebruiker($gebruikerID){
 
     $stmt = $this->database->connection->prepare('SELECT groepen.id as groepID, groepnaam, locatie, projectnaam, voornaam, achternaam FROM groepen INNER JOIN gebruikers ON gebruikers.groepid = groepen.id WHERE gebruikers.id = ?');

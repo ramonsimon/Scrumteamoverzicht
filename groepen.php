@@ -76,7 +76,7 @@ $groep->groepenOphalen();
 						<?php 
 
 						// Requests all groups
-						$groepen_result = $groep->groepenOphalen();
+						$groepen_result = $groep->groepenOphalen2();
 
 						// Loops through groups
 						foreach ($groepen_result as $item)
