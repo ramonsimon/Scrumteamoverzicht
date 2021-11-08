@@ -45,17 +45,17 @@ public function schoonmakersOphalen() {
 }
 
 // Adds a cleaner
-public function lesToevoegen($lesnaam, $lokaal, $starttijd, $eindtijd) {
-    $stmt = $this->database->connection->prepare("INSERT INTO lessen (lesnaam,lokaal,starttijd,eindtijd) VALUES (?,?,?,?)");
-    $stmt->bind_param('ssss', $lesnaam, $lokaal, $starttijd, $eindtijd);
+public function lesToevoegen($lesnaam, $lokaal, $dag, $starttijd, $eindtijd) {
+    $stmt = $this->database->connection->prepare("INSERT INTO lessen (lesnaam,lokaal,dag,starttijd,eindtijd) VALUES (?,?,?,?,?)");
+    $stmt->bind_param('sssss', $lesnaam, $lokaal, $dag, $starttijd, $eindtijd);
     $stmt->execute();
     header("location:lessen.php");
 }
 
 // Updates a cleaner
-public function lesWijzigen($id, $lesnaam, $lokaal, $starttijd, $eindtijd) {
-    $stmt = $this->database->connection->prepare("UPDATE lessen SET lesnaam=?,lokaal=?,starttijd=?,eindtijd=? WHERE id= ?");
-    $stmt->bind_param('ssssi', $lesnaam, $lokaal, $starttijd, $eindtijd, $id);
+public function lesWijzigen($id, $lesnaam, $lokaal, $dag, $starttijd, $eindtijd) {
+    $stmt = $this->database->connection->prepare("UPDATE lessen SET lesnaam=?,lokaal=?,dag=?,starttijd=?,eindtijd=? WHERE id= ?");
+    $stmt->bind_param('sssssi', $lesnaam, $lokaal, $dag, $starttijd, $eindtijd, $id);
     $stmt->execute();
     header("location:lessen.php");
 }

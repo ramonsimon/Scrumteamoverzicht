@@ -60,6 +60,9 @@ $les->lessenOphalen();
 									Lokaal
 								</th>
 								<th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
+									Dag
+								</th>
+								<th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
 									Startijd
 								</th>
                                 <th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
@@ -93,6 +96,13 @@ $les->lessenOphalen();
 							"<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
 								<p class='text-gray-900 whitespace-no-wrap'>
 									"; echo $item['lokaal'];"
+								</p>
+							</td>";
+
+							echo 
+							"<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+								<p class='text-gray-900 whitespace-no-wrap'>
+									"; echo $item['dag'];"
 								</p>
 							</td>";
 

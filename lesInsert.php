@@ -24,9 +24,10 @@ if(isset($_POST['submit']))
 {    
     $lesnaam = $_POST['lesnaam'];
     $lokaal = $_POST['lokaal'];
+    $dag = $_POST['dag'];
     $starttijd = $_POST['starttijd'];
     $eindtijd = $_POST['eindtijd'];
-    $les->lesToevoegen($lesnaam, $lokaal, $starttijd, $eindtijd);
+    $les->lesToevoegen($lesnaam, $lokaal, $dag, $starttijd, $eindtijd);
 } else {
     header("location:fail.php");
     die;
