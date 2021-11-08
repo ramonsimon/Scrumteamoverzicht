@@ -90,20 +90,27 @@ foreach ($groep as $singleGroep){
     </a>
 </div>
 
-    <div class="pagewrapper">
+ 
+        <br>
+    <h1 class="text-3xl text-center">Locatie wijzigen</h1>
+    <div class="mt-5 md:mt-0 md:col-span-2">
+        <div class="shadow overflow-hidden sm:rounded-md">
+            <div class="px-4 py-5 bg-white sm:p-6">
+            <div class="pagewrapper">
         <?php
             if ($id != null){
                 echo '
                 <div class="flex flex-wrap mb-6">
-                    <div class="h-10 flex-0 sm:flex-initial mr-6"><a class="btn-primary" href="student.php"><i class="fas fa-arrow-left"></i> Terug</a></div>
-                <div class="h-10 leading-10 flex-0 sm:flex-grow mt-4 sm:mt-0"><h1 class="leading-6">Locatie wijzigen</h1></div>
+                <div class="flex"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><a href="student.php" class="btn-primary"><i class="fas fa-arrow-left"></i> Terug</a></button></div>
+                </div>
+                
                 </div>
                 <form action="locatieUpdate.php" method="post">
                 <input type="text" value="'.  $id .'" name="id" class="hidden" required />
                 <div class="flex flex-wrap my-4">
                     <div class="flex-inherit w-60"><label class="font-semibold leading-10">Locatie:</label></div>
                     <div>
-                    <select name="locatie" class="form-control">
+                    <select name="locatie" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
                         <option value="Tafel 1">Tafel 1</option>
                         <option value="Tafel 2">Tafel 2</option>
                         <option value="Tafel 3">Tafel 3</option>
@@ -117,7 +124,13 @@ foreach ($groep as $singleGroep){
                     </select>
                 </div>
                 </div>
-                <input type="submit" name="submit" value="Wijzigen" class="btn-success cursor-pointer mt-4">
+               
+              
+                 
+                      
+                <button type="submit" name="submit" value="Wijzigen" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Wijzigen
+                </button>
                 </form>
                 ';
             }else{
