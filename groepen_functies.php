@@ -31,7 +31,7 @@ public function groepVerwijderen($id) {
 
 // Gets all users
 public function groepenOphalen() {
-    $stmt = $this->database->connection->prepare('SELECT * FROM groepen');
+    $stmt = $this->database->connection->prepare('SELECT groepen.id as groepID, groepnaam, locatie, projectnaam, vraag FROM groepen');
     $stmt->execute();
     $result = $stmt->get_result();
     return $result;
