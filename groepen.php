@@ -94,7 +94,7 @@ $groep->groepenOphalen();
 								<p class='text-gray-900 whitespace-no-wrap'>
 									"; $teamLeden = $groep->getGebruikersBijGroep($item['groepID']);
 									foreach($teamLeden as $leden){
-										echo $leden['voornaam'] . ' ' . $leden['achternaam'];
+										echo $leden['voornaam'] . ' ' . $leden['achternaam']. ' ' ;
 									}"
 								</p>
 							</td>";

@@ -28,14 +28,14 @@ if(isset($_POST['submit']))
     $wachtwoord = $_POST['wachtwoord'];
 
 
-    $url = 'http://localhost/Scrumteamoverzicht999/api/product/create.php';
+    $url = 'http://localhost/scrumteamdashboard/Scrumteamoverzicht/api/product/create.php';
 
     $data = array(
         'gebruikersnaam' => $gebruikersnaam,
         'voornaam' => $voornaam,
         'achternaam' => $achternaam,
         'wachtwoord' => $wachtwoord,
-        'rol' => '1'
+        'rol' => '0'
     );
 
     $body = json_encode($data);
