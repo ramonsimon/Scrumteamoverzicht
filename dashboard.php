@@ -57,7 +57,12 @@ $groep->groepenOphalen();
 							<div class="mx-2 my-2 place-items-center text-white bg-' . $color . '-700 rounded-3xl">
 							<h1 class="text-3xl text-center">'.$item['groepnaam'].'</h1>
 							<br>
-					
+							';$teamLeden = $groep->getGebruikersBijGroep($item['groepID']);
+							foreach($teamLeden as $leden){
+								echo '<h1 class="text-center">'. $leden['voornaam'] . ' ' . $leden['achternaam'] . '</h1>
+                                '; 
+                            }
+                            echo '
 							<br>
 							<h1 class="text-center">'.$item['locatie'].'</h1>
 							</div>

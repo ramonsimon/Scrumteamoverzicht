@@ -71,6 +71,10 @@ foreach ($les as $singleLes){
                     <div class="flex-grow"><input type="text" value="'.  $les['lokaal'] .'" name="lokaal" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
                 </div>
                 <div class="flex flex-wrap my-4">
+                    <div class="flex-inherit w-60"><label class="font-semibold leading-10" leading-10>Dag:</label></div>
+                    <div class="flex-grow"><input type="text" value="'.  $les['dag'] .'" name="dag" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
+                </div>
+                <div class="flex flex-wrap my-4">
                     <div class="flex-inherit w-60"><label class="font-semibold leading-10">Starttijd:</label></div>
                     <div><input type="time" value="'.  $les['starttijd'] .'" name="starttijd" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
                 </div>

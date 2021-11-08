@@ -76,7 +76,7 @@ $groep->groepenOphalen();
 						<?php 
 
 						// Requests all groups
-						$groepen_result = $groep->groepenOphalen();
+						$groepen_result = $groep->groepenOphalen2();
 
 						// Loops through groups
 						foreach ($groepen_result as $item)
@@ -92,7 +92,10 @@ $groep->groepenOphalen();
 							echo 
 							"<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
 								<p class='text-gray-900 whitespace-no-wrap'>
-									"; echo $item['leden'] . ', ';"
+									"; $teamLeden = $groep->getGebruikersBijGroep($item['groepID']);
+									foreach($teamLeden as $leden){
+										echo $leden['voornaam'] . ' ' . $leden['achternaam']. ' ' ;
+									}"
 								</p>
 							</td>";
 
