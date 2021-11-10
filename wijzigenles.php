@@ -67,22 +67,48 @@ foreach ($les as $singleLes){
                     <div class="flex-grow"><input type="text" value="'.  $les['lesnaam'] .'" name="lesnaam" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
                 </div>
                 <div class="flex flex-wrap my-4">
-                    <div class="flex-inherit w-60"><label class="font-semibold leading-10" leading-10>Lokaal:</label></div>
-                    <div class="flex-grow"><input type="text" value="'.  $les['lokaal'] .'" name="lokaal" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
+                    <div class="flex-inherit w-60"><label class="font-semibold leading-10">Lokaal:</label></div>
+                    <div>
+                    <select name="lokaal" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                    <option selected="true" value="'.  $les['lokaal'] .'">'.  $les['lokaal'] .'</option>
+                        <option value="Tafel 1">Tafel 1</option>
+                        <option value="Tafel 2">Tafel 2</option>
+                        <option value="Tafel 3">Tafel 3</option>
+                        <option value="Tafel 4">Tafel 4</option>
+                        <option value="Cabine 1">Cabine 1</option>
+                        <option value="Cabine 2">Cabine 2</option>
+                        <option value="Cabine 3">Cabine 3</option>
+                        <option value="Cabine 4">Cabine 4</option>
+                        <option value="C104">C104</option>
+                        <option value="Kantine">Kantine</option>
+                    </select>
+                </div>
                 </div>
                 <div class="flex flex-wrap my-4">
-                    <div class="flex-inherit w-60"><label class="font-semibold leading-10" leading-10>Dag:</label></div>
-                    <div class="flex-grow"><input type="text" value="'.  $les['dag'] .'" name="dag" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
+                    <div class="flex-inherit w-60"><label class="font-semibold leading-10">Dag:</label></div>
+                    <div>
+                    <select name="dag" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
+                    <option selected="true" value="'.  $les['dag'] .'">'.  $les['dag'] .'</option>
+                        <option value="Maandag">Maandag</option>
+                        <option value="Dinsdag">Dinsdag</option>
+                        <option value="Woensdag">Woensdag</option>
+                        <option value="Donderdag">Donderdag</option>
+                        <option value="Vrijdag">Vrijdag</option>
+                    </select>
                 </div>
+                </div>
+
                 <div class="flex flex-wrap my-4">
                     <div class="flex-inherit w-60"><label class="font-semibold leading-10">Starttijd:</label></div>
-                    <div><input type="time" value="'.  $les['starttijd'] .'" name="starttijd" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
+                    <div class="flex-grow"><input type="time" value="'.  $les['starttijd'] .'" name="starttijd" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
                 </div>
                 <div class="flex flex-wrap my-4">
                     <div class="flex-inherit w-60"><label class="font-semibold leading-10">Eindtijd:</label></div>
-                    <div><input type="time" value="'.  $les['eindtijd'] .'" name="eindtijd" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
+                    <div class="flex-grow"><input type="time" value="'.  $les['eindtijd'] .'" name="eindtijd" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
                 </div>
-                <input type="submit" name="submit" value="Wijzigen" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                <button type="submit" name="submit" value="Wijzigen" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Wijzigen
+                </button>
                 </form>
                 ';
             }else{
