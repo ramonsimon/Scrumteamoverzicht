@@ -89,7 +89,7 @@ public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $ach
     public function checklogin($gebruikersnaam, $wachtwoord) {
 
         $url = $GLOBALS['host'] .'/api/login/login.php';
-
+        $_SESSION['loggedin'] = false;
         $data = array(
             'gebruikersnaam' => $gebruikersnaam,
             'wachtwoord' => $wachtwoord
@@ -129,18 +129,17 @@ public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $ach
         curl_close($ch);
 
         $test = json_decode($result);
-        if ($test->message = "Access granted.") {
+        if ($test->message == "Access granted.") {
             $_SESSION['loggedin'] = true;
             $_SESSION['rol'] = $test->data->rol;
-        }
-
-
+            $_SESSION['id'] = $test->data->id;
 
 
 //        if (str_contains($result, 'Successful')) {
 //            echo 'true';
 //            $_SESSION['loggedin'] = true;
 //        }
+        }
 
     }
 

@@ -43,7 +43,8 @@ if($email_exists && password_verify($data->wachtwoord, $user->wachtwoord)){
             "voornaam" => $user->voornaam,
             "achternaam" => $user->achternaam,
             "gebruikersnaam" => $user->gebruikersnaam,
-            "rol" => $user->rol
+            "rol" => $user->rol,
+            "id" => $user->id
 
         )
     );

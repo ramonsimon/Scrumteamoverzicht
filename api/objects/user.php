@@ -93,6 +93,7 @@ class User{
             $this->voornaam = $row['voornaam'];
             $this->wachtwoord = $row['wachtwoord'];
             $this->rol = $row['rol'];
+            $this->id = $row['id'];
 
             // return true because email exists in the database
             return true;

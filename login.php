@@ -34,22 +34,29 @@ $gebruiker = new Gebruiker();
 //                $_SESSION['id'] = $results['id'];
 //                $_SESSION['rol'] = $results['rol'];
 //                $_SESSION['loggedin'] = true;
+
+        if ($_SESSION['loggedin'] == true  ) {
+
+
 //            // Checks on role
-            if($_SESSION['rol'] == 1)
-            {
+            if ($_SESSION['rol'] == 1) {
                 $_SESSION['rol'];
                 header("Location:dashboard.php");
-            }elseif($_SESSION['rol'] == 0)
-            {
+            } elseif ($_SESSION['rol'] == 0) {
                 echo $_SESSION['rol'];
                 header("Location:student.php");
-            }else
-            {
+            } else {
                 // Error message
                 $_SESSION['message'] = '<i class="fas fa-exclamation-circle"></i> Geen geldige rol om in te loggen';
                 header("Location:index.php");
             }
+        }
 
+        if($_SESSION['loggedin'] == false){
+//             Error message
+                $_SESSION['message'] = '<i class="fas fa-exclamation-circle"></i> Incorrecte gebruikersnaam of wachtwoord';
+                header("Location:index.php");
+        }
 //            {
 //                // Error message
 //                $_SESSION['message'] = '<i class="fas fa-exclamation-circle"></i> Incorrecte gebruikersnaam of wachtwoord';
@@ -63,4 +70,4 @@ $gebruiker = new Gebruiker();
 //        }
 
    }
-?>    
+?>
