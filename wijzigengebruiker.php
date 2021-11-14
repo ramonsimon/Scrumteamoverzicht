@@ -23,6 +23,11 @@ include_once('gebruiker_functies.php');
 
 $gebruiker = new Gebruiker();
 
+// include groepen class
+include_once('groepen_functies.php');
+
+$groepClass = new Groep();
+
 // Gets user based on id
 $gebruiker = $gebruiker->gebruikerOphalen($id);
 
@@ -59,7 +64,7 @@ foreach ($gebruiker as $singleGebruiker){
             if ($id != null){
                 echo '
                 <div class="flex flex-wrap mb-6">
-                <div class="flex"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><a href="gebruikers.php" class="btn-primary"><i class="fas fa-arrow-left"></i> Terug</a></button></div>
+                <div class="flex"><button class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded"><a href="gebruikers.php" class="btn-primary"><i class="fas fa-arrow-left"></i> Terug</a></button></div>
                 </div>
                 <form action="gebruikerUpdate.php" method="post">
                 <input type="text" value="'.  $id .'" name="id" class="hidden" required />
@@ -82,7 +87,17 @@ foreach ($gebruiker as $singleGebruiker){
                 
                 <div class="flex flex-wrap my-4">
                 <div class="flex-inherit w-60"><label class="font-semibold leading-10">Projectgroep:</label></div>
-                <div class="flex-grow"><input type="text" value="'.  $gebruiker['groepid'] .'" name="groepid" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" /></div>
+                <div class="flex-grow"><select name="groepen" id="groepen">';
+
+                    echo '<option value=" "</option>';
+                foreach($groepClass->groepenOphalen() as $item){
+                    $selected = ($gebruiker['groepid'] == $item['groepID']) ? 'selected' : '';
+                    echo '<option value="'.$item['groepID'].'"'.$selected.'>'.$item['groepnaam'].'</option>';
+                    
+                }
+                ;
+
+             echo '</select></div>
             </div>
                
                 <button type="submit" name="submit" value="Wijzigen" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
@@ -114,3 +129,4 @@ foreach ($gebruiker as $singleGebruiker){
     </div>
 </body>
 </html>
+

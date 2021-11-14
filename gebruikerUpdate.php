@@ -17,7 +17,7 @@ if(isset($_POST['submit']))
     $gebruikersnaam = $_POST['gebruikersnaam'];
     $voornaam = $_POST['voornaam'];
     $achternaam = $_POST['achternaam'];
-    $groepid = $_POST['groepid'];
+    $groepid = $_POST['groepen'];
     $wachtwoord = $_POST['wachtwoord'];
     if (isset($wachtwoord) && $wachtwoord != '') {
         // Password hash

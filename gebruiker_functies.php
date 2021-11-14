@@ -37,9 +37,9 @@ public function gebruikersOphalen() {
     return $result;
 }
 
-public function getGebruikersBijTeam($groepID){
-    $stmt = $this->database->connection->prepare('SELECT groepnaam FROM groepen WHERE groepid = ?');
-    $stmt->bind_param('i', $groepID);
+public function getGroepnaamBijGebruikers($id){
+    $stmt = $this->database->connection->prepare('SELECT groepnaam FROM groepen WHERE id = ?');
+    $stmt->bind_param('i', $id);
     $stmt->execute();
     $result = $stmt->get_result();
     return $result; 

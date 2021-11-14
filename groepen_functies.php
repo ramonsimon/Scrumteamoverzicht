@@ -136,7 +136,7 @@ public function locatieWijzigen($id, $locatie) {
 
 // Gets user based on the id
 public function groepOphalen($id) {
-    $stmt = $this->database->connection->prepare('SELECT * FROM groepen WHERE id= ? LIMIT 1');
+    $stmt = $this->database->connection->prepare('SELECT * FROM groepen WHERE id= ?');
     $stmt->bind_param('i', $id);
     $stmt->execute();
     $result = $stmt->get_result();

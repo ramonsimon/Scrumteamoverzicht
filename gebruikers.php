@@ -123,10 +123,12 @@ $result = json_decode($gebruikers->CallAPI($method, $url), true);
 							echo 
 							"<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
 								<p class='text-gray-900 whitespace-no-wrap'>
-								"; echo $groep;" 
+									"; $teamnaam = $gebruikers->getGroepnaamBijGebruikers($item['groepid']);
+									foreach($teamnaam as $groepnaam){
+										echo $groepnaam['groepnaam'];
+									}"
 								</p>
 							</td>";
-							
 							echo 
 							"
 							<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
