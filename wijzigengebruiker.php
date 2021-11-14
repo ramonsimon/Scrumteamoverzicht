@@ -89,7 +89,7 @@ foreach ($gebruiker as $singleGebruiker){
                 <div class="flex-inherit w-60"><label class="font-semibold leading-10">Projectgroep:</label></div>
                 <div class="flex-grow"><select name="groepen" id="groepen">';
 
-                    echo '<option value=" "</option>';
+                    echo '<option value="NULL">Geen team</option>';
                 foreach($groepClass->groepenOphalen() as $item){
                     $selected = ($gebruiker['groepid'] == $item['groepID']) ? 'selected' : '';
                     echo '<option value="'.$item['groepID'].'"'.$selected.'>'.$item['groepnaam'].'</option>';

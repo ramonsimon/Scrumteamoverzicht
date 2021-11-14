@@ -85,67 +85,69 @@ $groep->groepenOphalen();
     </a>
 </div>
 
-    <br>
-        <h1 class="text-3xl text-center">Goeiemorgenmiddagavond</h1>
-    <br>
-		<div class="py-4">
-			<div class="py-4 overflow-x-auto flex flex-wrap">
-					
-						<?php 
-                        
+<body>
+<br>
+<h1 class="text-3xl text-center">Profiel aanpassen</h1>
+<div class="mt-5 md:mt-0 md:col-span-2">
+    <div class="shadow overflow-hidden sm:rounded-md">
+        <div class="px-4 py-5 bg-white sm:p-6">
+            <div class="col-span-6 sm:col-span-3">
+                <div class="pagewrapper">
+        <?php
+        
+        if ($_SESSION['id'] != null){
+            echo '
+            <div class="flex flex-wrap mb-6">
+                <div class="h-10 flex-0 sm:flex-initial mr-6"><a class="btn-primary" href="./"><i class="fas fa-arrow-left"></i> Terug</a></div>
+                <div class="h-10 leading-10 flex-0 sm:flex-grow mt-4 sm:mt-0"><h1 class="leading-6">Wachtwoord wijzigen</h1></div>
+		    </div>
+            <form action="studentUpdate.php" method="post">
+            <input type="text" value="'.  $_SESSION['id'] .'" name="id" class="hidden" required />
+            
+            <div class="flex flex-wrap my-4">
+                <div class="flex-inherit w-60"><label class="font-semibold leading-10" leading-10>Oud wachtwoord:</label></div>
+                <div class="flex-grow">
+                <input type="password" value="" name="oud-wachtwoord" class="input" id="" required />
+                </div>
+            </div>
 
-						// Requests all groups
-						$groepen_result = $groep->groepenOphalenGebruiker($_SESSION['id']);
+            <div class="flex flex-wrap my-4">
+                <div class="flex-inherit w-60"><label class="font-semibold leading-10" leading-10>Nieuw Wachtwoord:</label></div>
+                <div class="flex-grow">
+                <input type="password" value="" id="wachtwoord" name="wachtwoord" class="input" id="myInput" required />
+                </div>
+            </div>
 
-						// Loops through groups
-						foreach ($groepen_result as $item)
-						{
-                            if(isset($_POST['setVraagNull']))
-                        {
-                            $groep->updateVraagNull($item['groepID']);
-                        }
-                        elseif(isset($_POST['setVraag'])){
-                            $groep->updateVraag($item['groepID']);
-                        }
-
-                            $colorItem = $groep->getStatus($item['groepID']);
-                            ($colorItem['vraag'] == 1) ? $color = "red" : $color = "blue";
-							// print_r($item);
-							$data = '
-							<div class="w-1/4 h-auto '.'bg-blue">
-							<div class="mx-2 my-2 place-items-center text-white bg-'.$color.'-700 rounded-3xl">
-                            <h1  class="text-3xl text-center">'.$item['groepnaam'].'</h1>
-							<br>
-                            '; $teamLeden = $groep->getGebruikersBijGroep($item['groepID']);
-                            foreach($teamLeden as $leden){
-                                $data .= '<h1 class="text-center">'. $leden['voornaam'] . ' ' . $leden['achternaam'] . '</h1>
-                                '; 
-                            }
-                            echo '<br>';
-                            $data .='<br><h1 class="text-center">'.$item['locatie'].'</h1>
-                            <h1 class="underline text-xs text-center"><a href="wijzigenlocatie.php?id='.$item['groepID'].'" type="submit">Wijzigen</i></a> </h1><br>
-                            <div class="flex flex-row justify-center">
-                            <form class="inline" name="vraag" method="POST" action="">
-                            <div><button type="submit" name="setVraagNull" value="Vraag afmelden"><i class="fas fa-check"></i> Vraag afmelden</button></div>
-                            <div><button type="submit" name="setVraag" value="Stel vraag"><i class="fas fa-question"></i> Stel vraag</button></div>
-                            </form>
+            <div class="flex flex-wrap my-4">
+                <div class="flex-inherit w-60"><label class="font-semibold leading-10" leading-10>Bevestig Wachtwoord:</label></div>
+                <div class="flex-grow">
+                <input type="password" value="" id="bevestig_wachtwoord" name="bevestigwachtwoord" class="input" id="myInput" required />
+                </div>
+            </div>
+            <input type="submit" name="submit" value="Wijzigen" class="btn-success cursor-pointer mt-4">
+            </form>
+            ';
+        }else{
+                echo '
+                <div class="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-800 w-100 md:w-80 m-auto">
+                    <div class="w-full text-center">
+                        <div class="flex flex-col justify-between">
+                            <i class="my-2 fas fa-times text-red-400 text-4xl"></i>
+                            <p class="text-md py-2 px-6 text-gray-800 dark:text-white font-bold">
+                                Fout
+                            </p>
+                            <p class="text-gray-600 dark:text-gray-100 text-md py-2 px-6">
+                                De gebruiker kan niet gewijzigd worden, omdat geen gebruiker is opgevraagd.
+                            </p>
+                            <div class="flex items-center justify-between gap-4 w-full mt-8">
+                            <a class="btn-primary" href="student.php"><i class="fas fa-arrow-left"></i> Terug</a>
                             </div>
-                            </div>
-                          </div>
-                         
-                                </div>
-                                </div>
-							</div>
-                            
-							';
-
-                            
-
-                            echo $data;              
-					} ?>
-					</div>
-				</div>
-
-</body>        
-
+                        </div>
+                    </div>
+                </div>
+                ';
+            }
+        ?>
+    </div>
+</body>
 </html>

@@ -97,7 +97,7 @@ $result = json_decode($gebruikers->CallAPI($method, $url), true);
 							if($item["groepid"] == null){
 								$groep = 'Geen groep';
 							} else { 
-								$groep = 'Groep';
+								$groep = '';
 							}
 							echo 
 							"
@@ -126,7 +126,7 @@ $result = json_decode($gebruikers->CallAPI($method, $url), true);
 									"; $teamnaam = $gebruikers->getGroepnaamBijGebruikers($item['groepid']);
 									foreach($teamnaam as $groepnaam){
 										echo $groepnaam['groepnaam'];
-									}"
+									} 	echo $groep;"
 								</p>
 							</td>";
 							echo 

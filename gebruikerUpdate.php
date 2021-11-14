@@ -20,7 +20,7 @@ if(isset($_POST['submit'])) {
     $achternaam = $_POST['achternaam'];
     $groepid = $_POST['groepen'];
     $wachtwoord = $_POST['wachtwoord'];
-    $rol = 1;
+    $rol = 0;
     $jwt = $_SESSION['jwt'];
 
     $gebruiker->gebruikerWijzigen($id, $gebruikersnaam, $voornaam, $achternaam, $rol, $groepid, $wachtwoord, $jwt);
