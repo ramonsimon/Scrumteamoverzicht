@@ -12,7 +12,7 @@ class User{
     public $voornaam;
     public $achternaam;
     public $wachtwoord;
-    public $rol = 0;
+    public $rol;
 
     // constructor
     public function __construct($db){
@@ -92,6 +92,7 @@ class User{
             $this->gebruikersnaam = $row['gebruikersnaam'];
             $this->voornaam = $row['voornaam'];
             $this->wachtwoord = $row['wachtwoord'];
+            $this->rol = $row['rol'];
 
             // return true because email exists in the database
             return true;

@@ -40,9 +40,11 @@ if($email_exists && password_verify($data->wachtwoord, $user->wachtwoord)){
         "exp" => $expiration_time,
         "iss" => $issuer,
         "data" => array(
-            "voornaam" => $user->achternaam,
+            "voornaam" => $user->voornaam,
             "achternaam" => $user->achternaam,
-            "gebruikersnaam" => $user->gebruikersnaam
+            "gebruikersnaam" => $user->gebruikersnaam,
+            "rol" => $user->rol
+
         )
     );
 
