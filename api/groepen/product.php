@@ -9,7 +9,6 @@ class Product
     // object properties
     public $id;
     public $groepnaam;
-    public $leden;
     public $locatie;
     public $projectnaam;
 
@@ -44,20 +43,18 @@ class Product
         $query = "INSERT INTO
                 " . $this->table_name . "
             SET
-                groepnaam=:groepnaam, leden=:leden, locatie=:locatie, projectnaam=:projectnaam";
+                groepnaam=:groepnaam, locatie=:locatie, projectnaam=:projectnaam";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
 
         // sanitize
         $this->groepnaam = htmlspecialchars(strip_tags($this->groepnaam));
-        $this->leden = htmlspecialchars(strip_tags($this->leden));
         $this->locatie = htmlspecialchars(strip_tags($this->locatie));
         $this->projectnaam = htmlspecialchars(strip_tags($this->projectnaam));
 
         // bind values
         $stmt->bindParam(":groepnaam", $this->groepnaam);
-        $stmt->bindParam(":leden", $this->leden);
         $stmt->bindParam(":locatie", $this->locatie);
         $stmt->bindParam(":projectnaam", $this->projectnaam);
 

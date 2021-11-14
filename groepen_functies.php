@@ -92,12 +92,11 @@ public function schoonmakersOphalen() {
 }
 
 // Adds a cleaner
-public function groepToevoegen($groepnaam, $leden, $locatie, $projectnaam) {
+public function groepToevoegen($groepnaam,  $locatie, $projectnaam) {
     $url = $GLOBALS['host'] . '/api/groepen/create.php';
 
     $data = array(
         'groepnaam' => $groepnaam,
-        'leden' => $leden,
         'locatie' => $locatie,
         'projectnaam' => $projectnaam
     );

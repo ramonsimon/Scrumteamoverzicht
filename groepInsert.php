@@ -22,10 +22,9 @@ $groep = new Groep();
 if(isset($_POST['submit']))
 {    
     $groepnaam = $_POST['groepnaam'];
-    $leden = $_POST['leden'];
     $locatie = $_POST['locatie'];
     $projectnaam = $_POST['projectnaam'];
-    $groep->groepToevoegen($groepnaam, $leden, $locatie, $projectnaam);
+    $groep->groepToevoegen($groepnaam, $locatie, $projectnaam);
 } else {
     header("location:fail.php");
     die;
