@@ -6,17 +6,55 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit04170d43d54b62e3484525596566d280
 {
+    public static $files = array (
+        '21a4b23fff2e63ce4dc7ac8e13657bad' => __DIR__ . '/..' . '/clickfwd/yoyo/src/yoyo/helpers.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'Psr\\SimpleCache\\' => 16,
+            'Psr\\Container\\' => 14,
+        ),
+        'I' => 
+        array (
+            'Illuminate\\Contracts\\' => 21,
+            'Illuminate\\Container\\' => 21,
+        ),
         'F' => 
         array (
             'Firebase\\JWT\\' => 13,
         ),
+        'C' => 
+        array (
+            'Clickfwd\\Yoyo\\' => 14,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Psr\\SimpleCache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
+        ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Illuminate\\Contracts\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/illuminate/contracts',
+        ),
+        'Illuminate\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/illuminate/container',
+        ),
         'Firebase\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
+        'Clickfwd\\Yoyo\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/clickfwd/yoyo/src/yoyo',
         ),
     );
 
