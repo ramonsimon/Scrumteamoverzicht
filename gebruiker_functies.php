@@ -75,6 +75,107 @@ public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $ach
     header("location:gebruikers.php");
 }
 
+
+
+
+    public function checklogin($gebruikersnaam, $wachtwoord) {
+
+        $url = $GLOBALS['host'] .'/api/login/login.php';
+
+        $data = array(
+            'gebruikersnaam' => $gebruikersnaam,
+            'wachtwoord' => $wachtwoord
+        );
+
+        $body = json_encode($data);
+
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $result = curl_exec($ch);
+
+        curl_close($ch);
+        $oke = json_decode($result);
+        $jwt = $oke->jwt;
+        //2
+
+        $url = $GLOBALS['host'] .'/api/validate_token.php';
+
+        $data = array(
+            'jwt' => $jwt
+        );
+
+        $body = json_encode($data);
+
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $result = curl_exec($ch);
+
+        curl_close($ch);
+
+        $test = json_decode($result);
+        if ($test->message = "Access granted.") {
+            $_SESSION['loggedin'] = true;
+            $_SESSION['rol'] = $test->data->rol;
+        }
+
+
+
+
+//        if (str_contains($result, 'Successful')) {
+//            echo 'true';
+//            $_SESSION['loggedin'] = true;
+//        }
+
+    }
+
+
+    public function jwt($jwt) {
+
+        $url = $GLOBALS['host'] .'/api/validate_token.php';
+
+        $data = array(
+            'jwt' => $jwt
+        );
+
+        $body = json_encode($data);
+
+        $ch = curl_init($url);
+
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $result = curl_exec($ch);
+
+        curl_close($ch);
+
+//        print_r($result);
+
+        $oke = json_decode($result);
+
+//        return $oke;
+//        if (str_contains($result, 'Successful')) {
+//            echo 'true';
+//            $_SESSION['loggedin'] = true;
+//        }
+
+    }
+
+
+
+
+
+
+
+
 // Updates a cleaner
 public function gebruikerWijzigen($id, $gebruikersnaam, $voornaam, $achternaam) {
     $stmt = $this->database->connection->prepare("UPDATE gebruikers SET gebruikersnaam=?,voornaam=?,achternaam=? WHERE id= ?");
