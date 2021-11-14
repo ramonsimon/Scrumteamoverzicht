@@ -28,7 +28,8 @@ class User{
                 gebruikersnaam = :gebruikersnaam,
                 voornaam = :voornaam,
                 achternaam = :achternaam,
-                wachtwoord = :wachtwoord";
+                wachtwoord = :wachtwoord,
+                rol = :rol";
 
         // prepare the query
         $stmt = $this->conn->prepare($query);
@@ -38,11 +39,13 @@ class User{
         $this->voornaam=htmlspecialchars(strip_tags($this->voornaam));
         $this->achternaam=htmlspecialchars(strip_tags($this->achternaam));
         $this->wachtwoord=htmlspecialchars(strip_tags($this->wachtwoord));
+        $this->rol=htmlspecialchars(strip_tags($this->rol));
 
         // bind the values
         $stmt->bindParam(':gebruikersnaam', $this->gebruikersnaam);
         $stmt->bindParam(':voornaam', $this->voornaam);
         $stmt->bindParam(':achternaam', $this->achternaam);
+        $stmt->bindParam(':rol', $this->rol);
 
 
         // hash the password before saving to database

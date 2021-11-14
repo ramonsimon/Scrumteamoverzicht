@@ -55,16 +55,17 @@ public function schoonmakersOphalen() {
 
 
 // Adds a cleaner
-public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $achternaam) {
+public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $achternaam, $jwt) {
 
-    $url = $GLOBALS['host'] .'/api/product/create.php';
+    $url = $GLOBALS['host'] .'/api/product/create.2.php';
 
     $data = array(
         'gebruikersnaam' => $gebruikersnaam,
         'voornaam' => $voornaam,
         'achternaam' => $achternaam,
         'wachtwoord' => $wachtwoord,
-        'rol' => '0'
+        'rol' => '0',
+        'jwt' => $jwt
     );
 
     $body = json_encode($data);
@@ -79,7 +80,6 @@ public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $ach
 
     curl_close($ch);
 
-    print_r($result);
     header("location:gebruikers.php");
 }
 

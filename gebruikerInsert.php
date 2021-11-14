@@ -14,6 +14,7 @@ session_start();
 include_once('loginCheck.php');
 $check = new LoginCheck();
 $check->checkLogin(1);
+$jwt = $_SESSION['jwt'];
 
 // Includes user class
 include_once('gebruiker_functies.php');
@@ -28,7 +29,7 @@ if(isset($_POST['submit']))
     $voornaam = $_POST['voornaam'];
     $achternaam = $_POST['achternaam'];
     // $rol = $_POST['rol'];
-    $gebruiker->gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $achternaam);
+    $gebruiker->gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $achternaam, $jwt);
 } else {
     header("location:fail.php");
     die;
