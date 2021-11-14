@@ -3,7 +3,7 @@
 // Incudes db
 require_once('dbConnection.php');
 require_once('api_url.php');
-session_start();
+//session_start();
 class Gebruiker{
 private $database = [];
     
