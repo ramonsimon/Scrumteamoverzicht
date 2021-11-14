@@ -41,13 +41,13 @@ $les->lessenOphalen();
 <br>
 <h1 class="text-3xl text-center">Lessen</h1>
 <div class="flex">		
-<div class="flex">
+<div class="px-4 py-5 bg-white sm:p-6">
 	<button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><a href="aanmakenlessen.php" class="btn-primary"><i class="fas fa-plus"></i> Toevoegen</a></button>
 	</div>
 </div>
 <div class="pagewrapper">
 		
-		<div class="py-4">
+		<div class="px-4 py-5 bg-white sm:p-6">
 			<div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
 				<div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
 					<table class="min-w-full leading-normal">
