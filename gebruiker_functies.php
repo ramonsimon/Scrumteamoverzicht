@@ -37,6 +37,14 @@ public function gebruikersOphalen() {
     return $result;
 }
 
+public function getGebruikersBijTeam($groepID){
+    $stmt = $this->database->connection->prepare('SELECT groepnaam FROM groepen WHERE groepid = ?');
+    $stmt->bind_param('i', $groepID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result; 
+}
+
 // Gets all cleaners
 public function schoonmakersOphalen() {
     $stmt = $this->database->connection->prepare('SELECT * FROM gebruikers WHERE rol = 0');
@@ -56,7 +64,7 @@ public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $ach
         'voornaam' => $voornaam,
         'achternaam' => $achternaam,
         'wachtwoord' => $wachtwoord,
-        'rol' => '1'
+        'rol' => '0'
     );
 
     $body = json_encode($data);
@@ -76,17 +84,17 @@ public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $ach
 }
 
 // Updates a cleaner
-public function gebruikerWijzigen($id, $gebruikersnaam, $voornaam, $achternaam) {
-    $stmt = $this->database->connection->prepare("UPDATE gebruikers SET gebruikersnaam=?,voornaam=?,achternaam=? WHERE id= ?");
-    $stmt->bind_param('sssi', $gebruikersnaam, $voornaam, $achternaam, $id);
+public function gebruikerWijzigen($id, $gebruikersnaam, $voornaam, $achternaam, $groepid) {
+    $stmt = $this->database->connection->prepare("UPDATE gebruikers SET gebruikersnaam=?,voornaam=?,achternaam=?,groepid=? WHERE id= ?");
+    $stmt->bind_param('sssii', $gebruikersnaam, $voornaam, $achternaam, $groepid, $id);
     $stmt->execute();
     header("location:gebruikers.php");
 }
 
 // Updates a cleaner with password
-public function gebruikerWijzigenMetWachtwoord($id, $gebruikersnaam, $wachtwoord, $voornaam, $achternaam) {
-    $stmt = $this->database->connection->prepare("UPDATE gebruikers SET gebruikersnaam=?,wachtwoord=?,voornaam=?,achternaam=? WHERE id= ?");
-    $stmt->bind_param('ssssi', $gebruikersnaam, $wachtwoord, $voornaam, $achternaam, $id);
+public function gebruikerWijzigenMetWachtwoord($id, $gebruikersnaam, $wachtwoord, $voornaam, $achternaam, $groepid) {
+    $stmt = $this->database->connection->prepare("UPDATE gebruikers SET gebruikersnaam=?,wachtwoord=?,voornaam=?,achternaam=?,groepid=? WHERE id= ?");
+    $stmt->bind_param('ssssii', $gebruikersnaam, $wachtwoord, $voornaam, $achternaam, $groepid, $id);
     $stmt->execute();
     header("location:gebruikers.php");
 }

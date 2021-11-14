@@ -79,6 +79,11 @@ foreach ($gebruiker as $singleGebruiker){
                     <div class="flex-inherit w-60"><label class="font-semibold leading-10">Achternaam:</label></div>
                     <div class="flex-grow"><input type="text" value="'.  $gebruiker['achternaam'] .'" name="achternaam" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
                 </div>
+                
+                <div class="flex flex-wrap my-4">
+                <div class="flex-inherit w-60"><label class="font-semibold leading-10">Projectgroep:</label></div>
+                <div class="flex-grow"><input type="text" value="'.  $gebruiker['groepid'] .'" name="groepid" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" /></div>
+            </div>
                
                 <button type="submit" name="submit" value="Wijzigen" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                 Wijzigen

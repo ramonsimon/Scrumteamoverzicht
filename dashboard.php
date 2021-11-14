@@ -33,7 +33,7 @@ $groep->groepenOphalen();
 	<link href="assets/fontawesome/css/solid.css" rel="stylesheet">
 	<script type="text/javascript" src="assets/navbar.js"></script>
     <?php include 'navbarvoorbeeld.php' ?>
-    <?php yoyo_scripts(); ?>
+    <?php //yoyo_scripts(); ?>
 </head>
 
 <body>

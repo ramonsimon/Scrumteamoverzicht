@@ -17,13 +17,14 @@ if(isset($_POST['submit']))
     $gebruikersnaam = $_POST['gebruikersnaam'];
     $voornaam = $_POST['voornaam'];
     $achternaam = $_POST['achternaam'];
+    $groepid = $_POST['groepid'];
     $wachtwoord = $_POST['wachtwoord'];
     if (isset($wachtwoord) && $wachtwoord != '') {
         // Password hash
         $wachtwoord = password_hash($_POST['wachtwoord'], PASSWORD_DEFAULT);
-        $gebruiker->gebruikerWijzigenMetWachtwoord($id, $gebruikersnaam, $wachtwoord, $voornaam, $achternaam);
+        $gebruiker->gebruikerWijzigenMetWachtwoord($id, $gebruikersnaam, $wachtwoord, $voornaam, $achternaam, $groepid);
     } else {
-        $gebruiker->gebruikerWijzigen($id, $gebruikersnaam, $voornaam, $achternaam);
+        $gebruiker->gebruikerWijzigen($id, $gebruikersnaam, $voornaam, $achternaam, $groepid);
     }
 } else {
     header("location:fail");

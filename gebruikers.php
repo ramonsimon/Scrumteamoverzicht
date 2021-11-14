@@ -67,7 +67,7 @@ $result = json_decode($gebruikers->CallAPI($method, $url), true);
 								Achternaam
 							</th>
 							<th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
-								Wachtwoord
+								Groepnaam
 							</th>
 							<th scope="col" class="px-5 py-3 bg-white  border-b border-gray-200 text-gray-800  text-left text-sm uppercase font-normal">
 								Rol
@@ -93,6 +93,12 @@ $result = json_decode($gebruikers->CallAPI($method, $url), true);
 							} else { 
 								$rol = 'Docent';
 							}
+
+							if($item["groepid"] == null){
+								$groep = 'Geen groep';
+							} else { 
+								$groep = 'Groep';
+							}
 							echo 
 							"
 							<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
@@ -117,7 +123,7 @@ $result = json_decode($gebruikers->CallAPI($method, $url), true);
 							echo 
 							"<td class='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
 								<p class='text-gray-900 whitespace-no-wrap'>
-								"; echo '**********';" 
+								"; echo $groep;" 
 								</p>
 							</td>";
 							
