@@ -3,7 +3,7 @@
 // Incudes db
 require_once('dbConnection.php');
 require_once('api_url.php');
-
+session_start();
 class Gebruiker{
 private $database = [];
     
@@ -55,16 +55,17 @@ public function schoonmakersOphalen() {
 
 
 // Adds a cleaner
-public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $achternaam) {
+public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $achternaam, $jwt) {
 
-    $url = $GLOBALS['host'] .'/api/product/create.php';
+    $url = $GLOBALS['host'] .'/api/product/create.2.php';
 
     $data = array(
         'gebruikersnaam' => $gebruikersnaam,
         'voornaam' => $voornaam,
         'achternaam' => $achternaam,
         'wachtwoord' => $wachtwoord,
-        'rol' => '0'
+        'rol' => '0',
+        'jwt' => $jwt
     );
 
     $body = json_encode($data);
@@ -79,7 +80,6 @@ public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $ach
 
     curl_close($ch);
 
-    print_r($result);
     header("location:gebruikers.php");
 }
 
@@ -108,6 +108,7 @@ public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $ach
         curl_close($ch);
         $oke = json_decode($result);
         $jwt = $oke->jwt;
+        $_SESSION['jwt'] = $jwt;
         //2
 
         $url = $GLOBALS['host'] .'/api/validate_token.php';
@@ -133,6 +134,7 @@ public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $ach
             $_SESSION['loggedin'] = true;
             $_SESSION['rol'] = $test->data->rol;
             $_SESSION['id'] = $test->data->id;
+
 
 
 //        if (str_contains($result, 'Successful')) {
@@ -184,10 +186,33 @@ public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $ach
 
 
 // Updates a cleaner
-public function gebruikerWijzigen($id, $gebruikersnaam, $voornaam, $achternaam, $groepid) {
-    $stmt = $this->database->connection->prepare("UPDATE gebruikers SET gebruikersnaam=?,voornaam=?,achternaam=?,groepid=? WHERE id= ?");
-    $stmt->bind_param('sssii', $gebruikersnaam, $voornaam, $achternaam, $groepid, $id);
-    $stmt->execute();
+public function gebruikerWijzigen($id, $gebruikersnaam, $voornaam, $achternaam,$rol, $groepid, $wachtwoord, $jwt) {
+    $url = $GLOBALS['host'] .'/api/login/update_user.php';
+    $data = array(
+        'gebruikersnaam' => $gebruikersnaam,
+        'voornaam' => $voornaam,
+        'achternaam' => $achternaam,
+        'rol' => $rol,
+        'groepid' => $groepid,
+        'wachtwoord' => $wachtwoord,
+        'id' => $id,
+        'jwt' => $jwt
+
+    );
+
+    $body = json_encode($data);
+
+    $ch = curl_init($url);
+
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $result = curl_exec($ch);
+
+    curl_close($ch);
+    $oke = json_decode($result);
+    $_SESSION['jwt'] = $oke->jwt;
     header("location:gebruikers.php");
 }
 

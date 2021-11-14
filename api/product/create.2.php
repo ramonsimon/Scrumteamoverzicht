@@ -7,7 +7,7 @@ header("Access-Control-Max-Age: 3600");
 header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 
 // required to encode json web token
-include_once 'core.php';
+include_once '../login/core.php';
 include_once '../../libs/php-jwt-master/src/BeforeValidException.php';
 include_once '../../libs/php-jwt-master/src/ExpiredException.php';
 include_once '../../libs/php-jwt-master/src/SignatureInvalidException.php';
@@ -15,7 +15,7 @@ include_once '../../libs/php-jwt-master/src/JWT.php';
 use \Firebase\JWT\JWT;
 
 // files needed to connect to database
-include_once '../product/database.php';
+include_once 'database.php';
 include_once '../objects/user.php';
 
 // get database connection
@@ -44,13 +44,11 @@ if($jwt){
         $user->gebruikersnaam = $data->gebruikersnaam;
         $user->voornaam = $data->voornaam;
         $user->achternaam = $data->achternaam;
-        $user->rol = $data->rol;
-        $user->groepid = $data->groepid;
         $user->wachtwoord = $data->wachtwoord;
-        $user->id = $data->id;
+        $user->rol = $data->rol;
 
 // update the user record
-        if($user->update()){
+        if($user->create()){
             // we need to re-generate jwt because user details might be different
             $token = array(
                 "iat" => $issued_at,
@@ -72,7 +70,7 @@ if($jwt){
 // response in json format
             echo json_encode(
                 array(
-                    "message" => "User was updated.",
+                    "message" => "User is created successfully.",
                     "jwt" => $jwt
                 )
             );
