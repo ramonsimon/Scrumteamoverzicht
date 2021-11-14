@@ -103,5 +103,61 @@ class User{
         return false;
     }
 
-// update() method will be here
+//gebruikersnaam = :gebruikersnaam,
+//voornaam = :voornaam,
+//achternaam = :achternaam,
+//wachtwoord = :wachtwoord";
+
+
+// update a user record
+    public function update(){
+
+        // if password needs to be updated
+        $password_set=!empty($this->wachtwoord) ? ", wachtwoord = :wachtwoord" : "";
+
+        // if no posted password, do not update the password
+        $query = "UPDATE " . $this->table_name . "
+            SET
+                gebruikersnaam = :gebruikersnaam,
+                voornaam = :voornaam,
+                achternaam = :achternaam,
+                rol = :rol,
+                groepid = :groepid
+                {$password_set}
+            WHERE id = :id";
+
+        // prepare the query
+        $stmt = $this->conn->prepare($query);
+
+        // sanitize
+        $this->gebruikersnaam=htmlspecialchars(strip_tags($this->gebruikersnaam));
+        $this->voornaam=htmlspecialchars(strip_tags($this->voornaam));
+        $this->achternaam=htmlspecialchars(strip_tags($this->achternaam));
+        $this->rol = htmlspecialchars(strip_tags($this->rol));
+        $this->groepid = htmlspecialchars(strip_tags($this->groepid));
+
+        // bind the values from the form
+        $stmt->bindParam(':gebruikersnaam', $this->gebruikersnaam);
+        $stmt->bindParam(':voornaam', $this->voornaam);
+        $stmt->bindParam(':achternaam', $this->achternaam);
+        $stmt->bindParam(':rol', $this->rol);
+        $stmt->bindParam(':groepid', $this->groepid);
+
+        // hash the password before saving to database
+        if(!empty($this->wachtwoord)){
+            $this->wachtwoord=htmlspecialchars(strip_tags($this->wachtwoord));
+            $password_hash = password_hash($this->wachtwoord, PASSWORD_BCRYPT);
+            $stmt->bindParam(':wachtwoord', $password_hash);
+        }
+
+        // unique ID of record to be edited
+        $stmt->bindParam(':id', $this->id);
+
+        // execute the query
+        if($stmt->execute()){
+            return true;
+        }
+
+        return false;
+    }
 }
