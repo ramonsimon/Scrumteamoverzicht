@@ -1,5 +1,6 @@
 <?php
-class Product
+// 'groepen' object
+class Groepen
 {
 
     // database connection and table name
