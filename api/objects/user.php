@@ -103,11 +103,6 @@ class User{
         return false;
     }
 
-//gebruikersnaam = :gebruikersnaam,
-//voornaam = :voornaam,
-//achternaam = :achternaam,
-//wachtwoord = :wachtwoord";
-
 
 // update a user record
     public function update(){

@@ -47,7 +47,7 @@ if($jwt){
         $user->rol = $data->rol;
         $user->groepid = $data->groepid;
         $user->wachtwoord = $data->wachtwoord;
-        $user->id = $decoded->data->id;
+        $user->id = $data->id;
 
 // update the user record
         if($user->update()){

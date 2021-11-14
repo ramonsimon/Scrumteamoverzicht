@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Pathprefix
 $pathprefix = '../../';
 
@@ -6,27 +7,21 @@ $pathprefix = '../../';
 // $gebruikers = new Gebruiker();
 // $gebruikers->gebruikersOphalen();
 
+
 // Includes user class
 include_once('gebruiker_functies.php');
 $gebruiker = new Gebruiker();
 
 // If submit is clicked update the user
-if(isset($_POST['submit']))
-{
+if(isset($_POST['submit'])) {
     $id = $_POST['id'];
     $gebruikersnaam = $_POST['gebruikersnaam'];
     $voornaam = $_POST['voornaam'];
     $achternaam = $_POST['achternaam'];
     $groepid = $_POST['groepid'];
     $wachtwoord = $_POST['wachtwoord'];
-    if (isset($wachtwoord) && $wachtwoord != '') {
-        // Password hash
-        $wachtwoord = password_hash($_POST['wachtwoord'], PASSWORD_DEFAULT);
-        $gebruiker->gebruikerWijzigenMetWachtwoord($id, $gebruikersnaam, $wachtwoord, $voornaam, $achternaam, $groepid);
-    } else {
-        $gebruiker->gebruikerWijzigen($id, $gebruikersnaam, $voornaam, $achternaam, $groepid);
-    }
-} else {
-    header("location:fail");
-    die;
+    $rol = 1;
+    $jwt = $_SESSION['jwt'];
+
+    $gebruiker->gebruikerWijzigen($id, $gebruikersnaam, $voornaam, $achternaam, $rol, $groepid, $wachtwoord, $jwt);
 }
