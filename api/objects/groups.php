@@ -1,5 +1,6 @@
 <?php
-class Product
+// 'groepen' object
+class Groepen
 {
 
     // database connection and table name
@@ -69,6 +70,46 @@ class Product
     }
 
 
+    // update a user record
+    public function update(){
+
+
+        // if no posted password, do not update the password
+        $query = "UPDATE " . $this->table_name . "
+            SET
+                groepnaam = :groepnaam,
+                locatie = :locatie,
+                projectnaam = :projectnaam
+            WHERE id = :id";
+
+        // prepare the query
+        $stmt = $this->conn->prepare($query);
+
+        // sanitize
+        $this->groepnaam=htmlspecialchars(strip_tags($this->groepnaam));
+        $this->locatie=htmlspecialchars(strip_tags($this->locatie));
+        $this->projectnaam=htmlspecialchars(strip_tags($this->projectnaam));
+
+        // bind the values from the form
+        $stmt->bindParam(':groepnaam', $this->groepnaam);
+        $stmt->bindParam(':locatie', $this->locatie);
+        $stmt->bindParam(':projectnaam', $this->projectnaam);
+
+        // unique ID of record to be edited
+        $stmt->bindParam(':id', $this->id);
+
+        // execute the query
+        if($stmt->execute()){
+            return true;
+        }
+
+        return false;
+    }
+}
+
+
+
+
 // used when filling up the update product form
     function readOne()
     {
@@ -105,5 +146,5 @@ class Product
         $this->category_id = $row['category_id'];
         $this->category_name = $row['category_name'];
     }
-}
+
 ?>

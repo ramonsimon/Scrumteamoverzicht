@@ -13,7 +13,7 @@ session_start();
 include_once('loginCheck.php');
 $check = new LoginCheck();
 $check->checkLogin(1);
-
+$jwt = $_SESSION['jwt'];
 // Includes user class
 include_once('groepen_functies.php');
 $groep = new Groep();
@@ -24,7 +24,7 @@ if(isset($_POST['submit']))
     $groepnaam = $_POST['groepnaam'];
     $locatie = $_POST['locatie'];
     $projectnaam = $_POST['projectnaam'];
-    $groep->groepToevoegen($groepnaam, $locatie, $projectnaam);
+    $groep->groepToevoegen($groepnaam, $locatie, $projectnaam,$jwt);
 } else {
     header("location:fail.php");
     die;
