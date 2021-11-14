@@ -48,10 +48,10 @@ $result = json_decode($gebruikers->CallAPI($method, $url), true);
 <h1 class="text-3xl text-center">Gebruikers</h1>
 
 <div class="pagewrapper">
-	<div class="flex">
+	<div class="px-4 py-5 bg-white sm:p-6">
         <a href="aanmakengebruiker.php" class="btn-primary"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><i class="fas fa-plus"></i> Toevoegen</button></a>
 	</div>
-	<div class="py-4">
+	<div class="px-4 py-5 bg-white sm:p-6">
 		<div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
 			<div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
 				<table class="min-w-full leading-normal">
