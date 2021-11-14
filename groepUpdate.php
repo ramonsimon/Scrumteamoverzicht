@@ -17,7 +17,7 @@ $check->checkLogin(1);
 // Includes user class
 include_once('groepen_functies.php');
 $groep = new Groep();
-
+$jwt = $_SESSION['jwt'];
 // If submit is clicked update the user
 if(isset($_POST['submit']))
 {    
@@ -26,7 +26,7 @@ if(isset($_POST['submit']))
     // $leden = $_POST['leden'];
     $locatie = $_POST['locatie'];
     $projectnaam = $_POST['projectnaam'];
-    $groep->groepWijzigen($id, $groepnaam, $locatie, $projectnaam);
+    $groep->groepWijzigen($id, $groepnaam, $locatie, $projectnaam, $jwt);
 } else {
     header("location:fail.php");
     die;

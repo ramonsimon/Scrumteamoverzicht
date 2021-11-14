@@ -114,16 +114,33 @@ public function groepToevoegen($groepnaam,  $locatie, $projectnaam, $jwt) {
 
     curl_close($ch);
 
-    print_r($result);
-    header("location:gebruikers.php");
+
     header("location:groepen.php");
 }
 
 // Updates a cleaner
-public function groepWijzigen($id, $groepnaam, $locatie, $projectnaam) {
-    $stmt = $this->database->connection->prepare("UPDATE groepen SET groepnaam=?,locatie=?,projectnaam=? WHERE id= ?");
-    $stmt->bind_param('sssi', $groepnaam, $locatie, $projectnaam, $id);
-    $stmt->execute();
+public function groepWijzigen($id, $groepnaam, $locatie, $projectnaam, $jwt) {
+    $url = $GLOBALS['host'] . '/api/groepen/update_groepen.php';
+
+    $data = array(
+        'groepnaam' => $groepnaam,
+        'locatie' => $locatie,
+        'projectnaam' => $projectnaam,
+        'id' => $id,
+        'jwt' => $jwt
+    );
+
+    $body = json_encode($data);
+
+    $ch = curl_init($url);
+
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $result = curl_exec($ch);
+
+    curl_close($ch);
     header("location:groepen.php");
 }
 
