@@ -23,7 +23,7 @@ $database = new Database();
 $db = $database->getConnection();
 
 // instantiate user object
-$user = new User($db);
+$groepen = new Groepen($db);
 
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
@@ -41,25 +41,21 @@ if($jwt){
         $decoded = JWT::decode($jwt, $key, array('HS256'));
 
         // set user property values
-        $user->gebruikersnaam = $data->gebruikersnaam;
-        $user->voornaam = $data->voornaam;
-        $user->achternaam = $data->achternaam;
-        $user->wachtwoord = $data->wachtwoord;
-        $user->rol = $data->rol;
+        $groepen->groepnaam = $data->groepnaam;
+        $groepen->locatie = $data->locatie;
+        $groepen->projectnaam = $data->projectnaam;
+        $groepen->id = $data->id;
+
 
 // update the user record
-        if($user->create()){
+        if($groepen->update()){
             // we need to re-generate jwt because user details might be different
             $token = array(
                 "iat" => $issued_at,
                 "exp" => $expiration_time,
                 "iss" => $issuer,
                 "data" => array(
-                    "voornaam" => $user->voornaam,
-                    "achternaam" => $user->achternaam,
-                    "gebruikersnaam" => $user->gebruikersnaam,
-                    "rol" => $user->rol,
-                    "id" => $user->id
+
                 )
             );
             $jwt = JWT::encode($token, $key);
@@ -70,7 +66,7 @@ if($jwt){
 // response in json format
             echo json_encode(
                 array(
-                    "message" => "User is created successfully.",
+                    "message" => "Group was updated.",
                     "jwt" => $jwt
                 )
             );
