@@ -17,11 +17,11 @@ $check->checkLogin(1);
 // Includes user class
 include_once('gebruiker_functies.php');
 $gebruiker = new Gebruiker();
-
+$jwt = $_SESSION['jwt'];
 // If delete button is clicked delete the user
 if(isset($_POST['verwijderen']))
 {    
-    $gebruiker->gebruikerVerwijderen($_POST['verwijderen']);
+    $gebruiker->gebruikerVerwijderen($_POST['verwijderen'], $jwt);
     header("location:gebruikers.php");
 } else {
     header("location:fail.php");

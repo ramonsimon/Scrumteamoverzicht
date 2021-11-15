@@ -14,7 +14,7 @@ public function __construct(){
 }
 
 // Deletes a user 
-public function gebruikerVerwijderen($id) {
+public function gebruikerVerwijderen($id, $jwt) {
     
     // $stmt2 = $this->database->connection->prepare("DELETE FROM opmerkingen WHERE opmerkingen.idGebruikers= ?");
     // $stmt2->bind_param('i', $id);
@@ -24,9 +24,28 @@ public function gebruikerVerwijderen($id) {
     // $stmt3->bind_param('i', $id);
     // $stmt3->execute(); 
 
-    $stmt = $this->database->connection->prepare("DELETE FROM gebruikers WHERE id= ?");
-    $stmt->bind_param('i', $id);
-    $stmt->execute();
+    $url = $GLOBALS['host'] .'/api/login/delete.php';
+
+    $data = array(
+        'id' => $id,
+        'jwt' => $jwt
+    );
+
+    $body = json_encode($data);
+
+    $ch = curl_init($url);
+
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $result = curl_exec($ch);
+
+    curl_close($ch);
+
+//    $stmt = $this->database->connection->prepare("DELETE FROM gebruikers WHERE id= ?");
+//    $stmt->bind_param('i', $id);
+//    $stmt->execute();
 }
 
 // Gets all users
@@ -45,16 +64,7 @@ public function getGroepnaamBijGebruikers($id){
     return $result; 
 }
 
-// Gets all cleaners
-public function schoonmakersOphalen() {
-    $stmt = $this->database->connection->prepare('SELECT * FROM gebruikers WHERE rol = 0');
-    $stmt->execute();
-    $result = $stmt->get_result();
-    return $result;
-}
 
-
-// Adds a cleaner
 public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $achternaam, $jwt) {
 
     $url = $GLOBALS['host'] .'/api/product/create.2.php';
@@ -216,13 +226,6 @@ public function gebruikerWijzigen($id, $gebruikersnaam, $voornaam, $achternaam,$
     header("location:gebruikers.php");
 }
 
-// Updates a cleaner with password
-public function gebruikerWijzigenMetWachtwoord($id, $gebruikersnaam, $wachtwoord, $voornaam, $achternaam, $groepid) {
-    $stmt = $this->database->connection->prepare("UPDATE gebruikers SET gebruikersnaam=?,wachtwoord=?,voornaam=?,achternaam=?,groepid=? WHERE id= ?");
-    $stmt->bind_param('ssssii', $gebruikersnaam, $wachtwoord, $voornaam, $achternaam, $groepid, $id);
-    $stmt->execute();
-    header("location:gebruikers.php");
-}
 
 // Updates password
 public function wachtwoordWijzigen($id, $wachtwoord) {

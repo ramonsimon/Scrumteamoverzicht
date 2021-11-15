@@ -158,4 +158,62 @@ class User{
 
         return false;
     }
+
+    // update a user record
+    public function locatie_update(){
+
+        // if no posted password, do not update the password
+        $query = "UPDATE groepen
+            SET
+                locatie = :locatie
+            WHERE id = :id";
+
+        // prepare the query
+        $stmt = $this->conn->prepare($query);
+
+        // sanitize
+        $this->locatie=htmlspecialchars(strip_tags($this->locatie));
+
+
+        // bind the values from the form
+        $stmt->bindParam(':locatie', $this->locatie);
+
+
+        // unique ID of record to be edited
+        $stmt->bindParam(':id', $this->id);
+
+        // execute the query
+        if($stmt->execute()){
+            return true;
+        }
+
+        return false;
+    }
+
+// delete the product
+    function delete(){
+
+        // delete query
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+
+        // sanitize
+        $this->id=htmlspecialchars(strip_tags($this->id));
+
+        // bind id of record to delete
+        $stmt->bindParam(1, $this->id);
+
+        // execute query
+        if($stmt->execute()){
+            return true;
+        }
+
+        return false;
+    }
+
+
+
+
 }

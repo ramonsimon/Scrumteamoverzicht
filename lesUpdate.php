@@ -17,7 +17,7 @@ $check->checkLogin(1);
 // Includes user class
 include_once('lessen_functies.php');
 $les = new Les();
-
+$jwt = $_SESSION['jwt'];
 // If submit is clicked update the user
 if(isset($_POST['submit']))
 {    
@@ -27,7 +27,7 @@ if(isset($_POST['submit']))
     $dag = $_POST['dag'];
     $starttijd = $_POST['starttijd'];
     $eindtijd = $_POST['eindtijd'];
-    $les->lesWijzigen($id, $lesnaam, $lokaal, $dag, $starttijd, $eindtijd);
+    $les->lesWijzigen($id, $lesnaam, $lokaal, $dag, $starttijd, $eindtijd, $jwt);
 } else {
     header("location:fail.php");
     die;

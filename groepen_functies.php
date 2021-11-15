@@ -145,10 +145,26 @@ public function groepWijzigen($id, $groepnaam, $locatie, $projectnaam, $jwt) {
 }
 
 // Updates a cleaner
-public function locatieWijzigen($id, $locatie) {
-    $stmt = $this->database->connection->prepare("UPDATE groepen SET locatie=? WHERE id= ?");
-    $stmt->bind_param('si', $locatie, $id);
-    $stmt->execute();
+public function locatieWijzigen($id, $locatie, $jwt) {
+    $url = $GLOBALS['host'] . '/api/groepen/update_groepen.php';
+
+    $data = array(
+        'locatie' => $locatie,
+        'id' => $id,
+        'jwt' => $jwt
+    );
+
+    $body = json_encode($data);
+
+    $ch = curl_init($url);
+
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $result = curl_exec($ch);
+
+    curl_close($ch);
     header("location:student.php");
 }
 
