@@ -36,28 +36,25 @@ $groep->groepenOphalen();
 <body>
 <br>
 <h1 class="text-3xl text-center">Groep aanmaken</h1>
-<div class="hidden sm:block" aria-hidden="true">
-  <div class="py-5">
-    <div class="border-t border-gray-200"></div>
-  </div>
-            </div>
+<div class="pagewrapper">
+    
+<div class="px-4 py-5 bg-white sm:p-6">
+<a href="groepen.php" class="btn-primary"><button class="bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded"><i class="fas fa-arrow-left"></i> Terug</button></a>
+</div>
 
-                    <div class="mt-5 md:mt-0 md:col-span-2">
-                        <div class="shadow overflow-hidden sm:rounded-md">
-                            <div class="px-4 py-5 bg-white sm:p-6">
-                                <div class="col-span-6 sm:col-span-3">
-                                    <div class="pagewrapper">
-                                        <div class="flex flex-wrap mb-6">
+<div class="px-4 py-5 bg-white sm:p-6">
+    <div class="shadow overflow-hidden sm:rounded-md">
+        <div class="px-4 py-5 bg-white sm:p-6">
+            <div class="col-span-6 sm:col-span-3">
                                       
-                <div class="flex"><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"><a href="groepen.php" class="btn-primary"><i class="fas fa-arrow-left"></i> Terug</a></button></div>
-                </div>
+               
                                         </div>
                                             <form action="groepInsert.php" method="post">
-                                                        <div class="mt-1 focus:ring-black-500 focus:border-black-500 block w-full shadow-sm sm:text-sm border-black-900 rounded-md">
+                                                        <div class="flex flex-wrap my-4">
                                                             <div class="flex-inherit w-60"><label class="font-semibold leading-10">Groepnaam:</label></div>
                                                             <div class="flex-grow"><input type="text" name="groepnaam" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
                                                         </div>
-                                                        <div class="from-group mb-3">
+                                                        <div class="flex flex-wrap my-4">
                                                         <div class="flex-inherit w-60"><label class="font-semibold leading-10" leading-10>Locatie:</label></div>
                                                         <div>
                                                         <select name="locatie" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" id="locatie" required>
@@ -75,16 +72,14 @@ $groep->groepenOphalen();
                                                         </select>
                                                     </div>
                                                 </div>
-                                                        <div class="mt-1 focus:ring-black-500 focus:border-black-500 block w-full shadow-sm sm:text-sm border-black-900 rounded-md">
+                                                        <div class="flex flex-wrap my-4">
                                                             <div class="flex-inherit w-60"><label class="font-semibold leading-10">Project:</label></div>
                                                             <div class="flex-grow"><input type="text" name="projectnaam" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent" required /></div>
                                                         </div>
+                                                        <button type="submit" name="submit" value="Toevoegen" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Opslaan</button>
                                                     </div>
                                                 </div>
-                                            <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                            <button type="submit" name="submit" value="Toevoegen" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                                Opslaan
-                                            </button>
+                                          
                                         </form>
                                     </div>
                                 </div>
