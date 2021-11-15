@@ -232,6 +232,14 @@ public function wachtwoordWijzigen($id, $wachtwoord) {
     header("location:gebruikers.php");
 }
 
+// Updates password
+public function wachtwoordWijzigen2($id, $wachtwoord) {
+    $stmt = $this->database->connection->prepare("UPDATE gebruikers SET wachtwoord=? WHERE id= ?");
+    $stmt->bind_param('si', $wachtwoord, $id);
+    $stmt->execute();
+    header("location:student.php");
+}
+
 // Gets user based on the id
 public function gebruikerOphalen($id) {
     $stmt = $this->database->connection->prepare('SELECT * FROM gebruikers WHERE id= ? LIMIT 1');
