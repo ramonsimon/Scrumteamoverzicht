@@ -89,7 +89,7 @@ $groep->groepenOphalen();
         <h1 class="text-3xl text-center">Goeiemorgenmiddagavond</h1>
     <br>
 		<div class="py-4">
-			<div class="py-4 overflow-x-auto flex flex-wrap">
+			<div class="py-4 overflow-x-auto flex flex-wrap justify-center">
 					
 						<?php 
                         
@@ -112,7 +112,7 @@ $groep->groepenOphalen();
                             ($colorItem['vraag'] == 1) ? $color = "red" : $color = "blue";
 							// print_r($item);
 							$data = '
-							<div class="w-1/4 h-auto '.'bg-blue">
+							<div class="w-96 h-auto '.'bg-blue">
 							<div class="mx-2 my-2 place-items-center text-white bg-'.$color.'-700 rounded-3xl">
                             <h1  class="text-3xl text-center">'.$item['groepnaam'].'</h1>
 							<br>
