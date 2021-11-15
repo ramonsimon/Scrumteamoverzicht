@@ -17,13 +17,13 @@ session_start();
 // Includes user class
 include_once('groepen_functies.php');
 $groep = new Groep();
-
+$jwt = $_SESSION['jwt'];
 // If submit is clicked update the user
 if(isset($_POST['submit']))
 {   
     $id = $_POST['id'];
     $locatie = $_POST['locatie'];
-    $groep->locatieWijzigen($id, $locatie);
+    $groep->locatieWijzigen($id, $locatie, $jwt);
 } else {
     header("location:fail.php");
     die;
