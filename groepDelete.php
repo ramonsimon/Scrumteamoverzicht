@@ -17,11 +17,11 @@ $check->checkLogin(1);
 // Includes user class
 include_once('groepen_functies.php');
 $groep = new groep();
-
+$jwt = $_SESSION['jwt'];
 // If delete button is clicked delete the user
 if(isset($_POST['verwijderen']))
 {    
-    $groep->groepVerwijderen($_POST['verwijderen']);
+    $groep->groepVerwijderen($_POST['verwijderen'],$jwt);
     header("location:groepen.php");
 } else {
     header("location:fail.php");

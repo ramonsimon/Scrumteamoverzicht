@@ -14,7 +14,7 @@ public function __construct(){
 }
 
 // Deletes a user 
-public function groepVerwijderen($id) {
+public function groepVerwijderen($id, $jwt) {
     
     // $stmt2 = $this->database->connection->prepare("DELETE FROM opmerkingen WHERE opmerkingen.idgroepen= ?");
     // $stmt2->bind_param('i', $id);
@@ -24,9 +24,24 @@ public function groepVerwijderen($id) {
     // $stmt3->bind_param('i', $id);
     // $stmt3->execute(); 
 
-    $stmt = $this->database->connection->prepare("DELETE FROM groepen WHERE id= ?");
-    $stmt->bind_param('i', $id);
-    $stmt->execute();
+    $url = $GLOBALS['host'] .'/api/groepen/delete.php';
+
+    $data = array(
+        'id' => $id,
+        'jwt' => $jwt
+    );
+
+    $body = json_encode($data);
+
+    $ch = curl_init($url);
+
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $result = curl_exec($ch);
+
+    curl_close($ch);
 }
 
 // Gets all users

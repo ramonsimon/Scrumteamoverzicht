@@ -71,7 +71,8 @@ class Groepen
 
 
     // update a user record
-    public function update(){
+    public function update()
+    {
 
 
         // if no posted password, do not update the password
@@ -86,9 +87,9 @@ class Groepen
         $stmt = $this->conn->prepare($query);
 
         // sanitize
-        $this->groepnaam=htmlspecialchars(strip_tags($this->groepnaam));
-        $this->locatie=htmlspecialchars(strip_tags($this->locatie));
-        $this->projectnaam=htmlspecialchars(strip_tags($this->projectnaam));
+        $this->groepnaam = htmlspecialchars(strip_tags($this->groepnaam));
+        $this->locatie = htmlspecialchars(strip_tags($this->locatie));
+        $this->projectnaam = htmlspecialchars(strip_tags($this->projectnaam));
 
         // bind the values from the form
         $stmt->bindParam(':groepnaam', $this->groepnaam);
@@ -99,15 +100,12 @@ class Groepen
         $stmt->bindParam(':id', $this->id);
 
         // execute the query
-        if($stmt->execute()){
+        if ($stmt->execute()) {
             return true;
         }
 
         return false;
     }
-}
-
-
 
 
 // used when filling up the update product form
@@ -147,4 +145,28 @@ class Groepen
         $this->category_name = $row['category_name'];
     }
 
+// delete the product
+    function delete()
+    {
+
+        // delete query
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+
+        // sanitize
+        $this->id = htmlspecialchars(strip_tags($this->id));
+
+        // bind id of record to delete
+        $stmt->bindParam(1, $this->id);
+
+        // execute query
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+    }
+}
 ?>
