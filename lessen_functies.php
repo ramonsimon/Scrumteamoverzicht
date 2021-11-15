@@ -2,6 +2,7 @@
 
 // Incudes db
 require_once('dbConnection.php');
+require_once('api_url.php');
 class Les{
 
 private $database = [];
@@ -53,10 +54,30 @@ public function lesToevoegen($lesnaam, $lokaal, $dag, $starttijd, $eindtijd) {
 }
 
 // Updates a cleaner
-public function lesWijzigen($id, $lesnaam, $lokaal, $dag, $starttijd, $eindtijd) {
-    $stmt = $this->database->connection->prepare("UPDATE lessen SET lesnaam=?,lokaal=?,dag=?,starttijd=?,eindtijd=? WHERE id= ?");
-    $stmt->bind_param('sssssi', $lesnaam, $lokaal, $dag, $starttijd, $eindtijd, $id);
-    $stmt->execute();
+public function lesWijzigen($id, $lesnaam, $lokaal, $dag, $starttijd, $eindtijd,$jwt) {
+    $url = $GLOBALS['host'] . '/api/lessen/lessen_update.php';
+
+    $data = array(
+        'lesnaam' => $lesnaam,
+        'lokaal' => $lokaal,
+        'dag' => $dag,
+        'starttijd' => $starttijd,
+        'eindtijd' => $eindtijd,
+        'id' => $id,
+        'jwt' => $jwt
+    );
+
+    $body = json_encode($data);
+
+    $ch = curl_init($url);
+
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $result = curl_exec($ch);
+
+    curl_close($ch);
     header("location:lessen.php");
 }
 

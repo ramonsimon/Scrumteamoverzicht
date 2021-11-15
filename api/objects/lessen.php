@@ -83,24 +83,29 @@ class Lessen
         // if no posted password, do not update the password
         $query = "UPDATE " . $this->table_name . "
             SET
-                groepnaam = :groepnaam,
-                locatie = :locatie,
-                projectnaam = :projectnaam
+                lesnaam = :lesnaam,
+                lokaal = :lokaal,
+                dag = :dag,
+                starttijd = :starttijd,
+                eindtijd = :eindtijd
             WHERE id = :id";
 
         // prepare the query
         $stmt = $this->conn->prepare($query);
 
         // sanitize
-        $this->groepnaam=htmlspecialchars(strip_tags($this->groepnaam));
-        $this->locatie=htmlspecialchars(strip_tags($this->locatie));
-        $this->projectnaam=htmlspecialchars(strip_tags($this->projectnaam));
+        $this->lesnaam=htmlspecialchars(strip_tags($this->lesnaam));
+        $this->lokaal=htmlspecialchars(strip_tags($this->lokaal));
+        $this->dag=htmlspecialchars(strip_tags($this->dag));
+        $this->starttijd=htmlspecialchars(strip_tags($this->starttijd));
+        $this->eindtijd=htmlspecialchars(strip_tags($this->eindtijd));
 
         // bind the values from the form
-        $stmt->bindParam(':groepnaam', $this->groepnaam);
-        $stmt->bindParam(':locatie', $this->locatie);
-        $stmt->bindParam(':projectnaam', $this->projectnaam);
-
+        $stmt->bindParam(':lesnaam', $this->lesnaam);
+        $stmt->bindParam(':lokaal', $this->lokaal);
+        $stmt->bindParam(':dag', $this->dag);
+        $stmt->bindParam(':starttijd', $this->starttijd);
+        $stmt->bindParam(':eindtijd', $this->eindtijd);
         // unique ID of record to be edited
         $stmt->bindParam(':id', $this->id);
 
