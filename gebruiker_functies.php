@@ -14,7 +14,7 @@ public function __construct(){
 }
 
 // Deletes a user 
-public function gebruikerVerwijderen($id) {
+public function gebruikerVerwijderen($id, $jwt) {
     
     // $stmt2 = $this->database->connection->prepare("DELETE FROM opmerkingen WHERE opmerkingen.idGebruikers= ?");
     // $stmt2->bind_param('i', $id);
@@ -27,7 +27,8 @@ public function gebruikerVerwijderen($id) {
     $url = $GLOBALS['host'] .'/api/login/delete.php';
 
     $data = array(
-        'id' => $id
+        'id' => $id,
+        'jwt' => $jwt
     );
 
     $body = json_encode($data);
