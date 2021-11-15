@@ -17,11 +17,11 @@ $check->checkLogin(1);
 // Includes user class
 include_once('lessen_functies.php');
 $les = new Les();
-
+$jwt = $_SESSION['jwt'];
 // If delete button is clicked delete the user
 if(isset($_POST['verwijderen']))
 {    
-    $les->lesVerwijderen($_POST['verwijderen']);
+    $les->lesVerwijderen($_POST['verwijderen'], $jwt);
     header("location:lessen.php");
 } else {
     header("location:fail.php");
