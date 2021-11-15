@@ -73,17 +73,17 @@ foreach ($les as $singleLes){
                     <div>
                     <select name="lokaal" class="rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent">
                     <option selected="true" value="'.  $les['lokaal'] .'">'.  $les['lokaal'] .'</option>
-                        <option value="Tafel 1">Tafel 1</option>
-                        <option value="Tafel 2">Tafel 2</option>
-                        <option value="Tafel 3">Tafel 3</option>
-                        <option value="Tafel 4">Tafel 4</option>
-                        <option value="Cabine 1">Cabine 1</option>
-                        <option value="Cabine 2">Cabine 2</option>
-                        <option value="Cabine 3">Cabine 3</option>
-                        <option value="Cabine 4">Cabine 4</option>
-                        <option value="C104">C104</option>
-                        <option value="Kantine">Kantine</option>
-                    </select>
+                    <option value="C101">C101</option>
+                    <option value="C102">C102</option>
+                    <option value="C103">C103</option>
+                    <option value="C104">C104</option>
+                    <option value="C105">C105</option>
+                    <option value="C106">C106</option>
+                    <option value="C107">C107</option>
+                    <option value="C108">C108</option>
+                    <option value="C109">C109</option>
+                    <option value="Kantine">Kantine</option>
+                </select>
                 </div>
                 </div>
                 <div class="flex flex-wrap my-4">

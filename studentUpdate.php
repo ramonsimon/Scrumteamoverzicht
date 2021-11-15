@@ -16,7 +16,8 @@ if(isset($_POST['submit']))
 
     // Hashes new password
     $nieuwWachtwoord = password_hash($_POST['wachtwoord'], PASSWORD_DEFAULT);
-    $oudwachtwoord = $_POST['oud-wachtwoord'];
+    $oudWachtwoord = $_POST['oud-wachtwoord'];
+    // $bevestigWachtwoord = $_POST['bevestig_wachtwoord'];
 
     // Gets userdata
     $gebruikersGegevens = $gebruiker->gebruikerOphalen($id);
@@ -27,13 +28,13 @@ if(isset($_POST['submit']))
     
     }
 
-    echo $oudwachtwoord;
+    echo $oudWachtwoord;
 
     //Checks if the old password matches the one from the database
-    if(password_verify($oudwachtwoord, $gebruikersGegeven['wachtwoord']))
+    if(password_verify($oudWachtwoord, $gebruikersGegeven['wachtwoord']))
     {
         // Edit password
-        $gebruiker->wachtwoordWijzigen($id, $nieuwWachtwoord);
+        $gebruiker->wachtwoordWijzigen2($id, $nieuwWachtwoord);
     }
     else
     {
