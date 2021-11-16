@@ -1,4 +1,4 @@
 <?php
 
- $host = 'https://scrumteamoverzicht.herokuapp.com/';
+ $host = 'https://scrumteamoverzicht.herokuapp.com';
 
