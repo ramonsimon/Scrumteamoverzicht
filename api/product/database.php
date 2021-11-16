@@ -2,10 +2,10 @@
 class Database{
 
     // specify your own database credentials
-    private $host = "localhost";
-    private $db_name = "scrumteamdashboard";
-    private $username = "root";
-    private $password = "";
+    private $host = "d3y0lbg7abxmbuoi.chr7pe7iynqr.eu-west-1.rds.amazonaws.com";
+    private $db_name = "sn08n5umavzmmsbz";
+    private $username = "ur2pr1akwv1m9v9n";
+    private $password = "fmsntiroclozucam";
     public $conn;
 
     // get the database connection
