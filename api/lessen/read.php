@@ -4,18 +4,18 @@ header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 // include database and object files
-include_once 'database.php';
-include_once '../objects/groups.php';
+include_once '../groepen/database.php';
+include_once '../objects/lessen.php';
 
 // instantiate database and product object
 $database = new Database();
 $db = $database->getConnection();
 
 // initialize object
-$groepen = new Groepen($db);
+$lessen = new Lessen($db);
 
 // query products
-$stmt = $groepen->read();
+$stmt = $lessen->read();
 $num = $stmt->rowCount();
 
 // check if more than 0 record found
@@ -35,9 +35,11 @@ if($num>0){
         extract($row);
         $product_item=array(
             "id" => $id,
-            "groepnaam" => $groepnaam,
-            "locatie" => $locatie,
-            "projectnaam" => $projectnaam
+            "lesnaam" => $lesnaam,
+            "lokaal" => $lokaal,
+            "dag" => $dag,
+            "starttijd"=> $starttijd,
+            "eindtijd" => $eindtijd
         );
 
         array_push($products_arr["records"], $product_item);

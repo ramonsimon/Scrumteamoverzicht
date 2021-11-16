@@ -1,4 +1,4 @@
 <?php
 
- $host = 'http://localhost/scrumteamdashboard/Scrumteamoverzicht/';
+ $host = 'https://scrumteamoverzicht.herokuapp.com/';
 

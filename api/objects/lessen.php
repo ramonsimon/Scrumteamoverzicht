@@ -26,7 +26,7 @@ class Lessen
     {
 
         // select all query
-        $query = "SELECT * FROM groepen";
+        $query = "SELECT * FROM lessen";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
