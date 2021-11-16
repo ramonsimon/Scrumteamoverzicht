@@ -36,7 +36,7 @@ $jwt=isset($data->jwt) ? $data->jwt : "";
 if(
     !empty($data->gebruikersnaam) &&
     !empty($data->voornaam) &&
-    !empty($data->wachtwoord)
+    !empty($data->achternaam)
 ) {
 // if jwt is not empty
     if ($jwt) {
