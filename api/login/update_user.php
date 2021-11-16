@@ -31,84 +31,93 @@ $data = json_decode(file_get_contents("php://input"));
 // get jwt
 $jwt=isset($data->jwt) ? $data->jwt : "";
 
+
+// make sure data is not empty
+if(
+    !empty($data->gebruikersnaam) &&
+    !empty($data->voornaam) &&
+    !empty($data->wachtwoord)
+) {
 // if jwt is not empty
-if($jwt){
+    if ($jwt) {
 
-    // if decode succeed, show user details
-    try {
+        // if decode succeed, show user details
+        try {
 
-        // decode jwt
-        $decoded = JWT::decode($jwt, $key, array('HS256'));
+            // decode jwt
+            $decoded = JWT::decode($jwt, $key, array('HS256'));
 
-        // set user property values
-        $user->gebruikersnaam = $data->gebruikersnaam;
-        $user->voornaam = $data->voornaam;
-        $user->achternaam = $data->achternaam;
-        $user->rol = $data->rol;
-        $user->groepid = $data->groepid;
-        $user->wachtwoord = $data->wachtwoord;
-        $user->id = $data->id;
+            // set user property values
+            $user->gebruikersnaam = $data->gebruikersnaam;
+            $user->voornaam = $data->voornaam;
+            $user->achternaam = $data->achternaam;
+            $user->rol = $data->rol;
+            $user->groepid = $data->groepid;
+            $user->wachtwoord = $data->wachtwoord;
+            $user->id = $data->id;
 
 // update the user record
-        if($user->update()){
-            // we need to re-generate jwt because user details might be different
-            $token = array(
-                "iat" => $issued_at,
-                "exp" => $expiration_time,
-                "iss" => $issuer,
-                "data" => array(
-                    "voornaam" => $user->voornaam,
-                    "achternaam" => $user->achternaam,
-                    "gebruikersnaam" => $user->gebruikersnaam,
-                    "rol" => $user->rol,
-                    "id" => $user->id
-                )
-            );
-            $jwt = JWT::encode($token, $key);
+            if ($user->update()) {
+                // we need to re-generate jwt because user details might be different
+                $token = array(
+                    "iat" => $issued_at,
+                    "exp" => $expiration_time,
+                    "iss" => $issuer,
+                    "data" => array(
+                        "voornaam" => $user->voornaam,
+                        "achternaam" => $user->achternaam,
+                        "gebruikersnaam" => $user->gebruikersnaam,
+                        "rol" => $user->rol,
+                        "id" => $user->id
+                    )
+                );
+                $jwt = JWT::encode($token, $key);
 
 // set response code
-            http_response_code(200);
+                http_response_code(200);
 
 // response in json format
-            echo json_encode(
-                array(
-                    "message" => "User was updated.",
-                    "jwt" => $jwt
-                )
-            );
-        }
+                echo json_encode(
+                    array(
+                        "message" => "User was updated.",
+                        "jwt" => $jwt
+                    )
+                );
+            } // message if unable to update user
+            else {
+                // set response code
+                http_response_code(401);
 
-// message if unable to update user
-        else{
+                // show error message
+                echo json_encode(array("message" => "Unable to update user."));
+            }
+        } // if decode fails, it means jwt is invalid
+        catch (Exception $e) {
+
             // set response code
             http_response_code(401);
 
             // show error message
-            echo json_encode(array("message" => "Unable to update user."));
+            echo json_encode(array(
+                "message" => "Access denied.",
+                "error" => $e->getMessage()
+            ));
         }
-    }
-
-        // if decode fails, it means jwt is invalid
-    catch (Exception $e){
+    } // show error message if jwt is empty
+    else {
 
         // set response code
         http_response_code(401);
 
-        // show error message
-        echo json_encode(array(
-            "message" => "Access denied.",
-            "error" => $e->getMessage()
-        ));
+        // tell the user access denied
+        echo json_encode(array("message" => "Access denied."));
     }
-}
+}else{
 
-// show error message if jwt is empty
-else{
+    // set response code - 400 bad request
+    http_response_code(400);
 
-    // set response code
-    http_response_code(401);
-
-    // tell the user access denied
-    echo json_encode(array("message" => "Access denied."));
+    // tell the user
+    echo json_encode(array("message" => "Unable to create product. Data is incomplete."));
 }
 ?>
