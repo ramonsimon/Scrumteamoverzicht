@@ -5,93 +5,93 @@ require_once('dbConnection.php');
 require_once('api_url.php');
 //session_start();
 class Gebruiker{
-private $database = [];
-    
+    private $database = [];
+
 
 // Db connection
-public function __construct(){
-    $this->database = new DbConnection(); 
-}
+    public function __construct(){
+        $this->database = new DbConnection();
+    }
 
 // Deletes a user 
-public function gebruikerVerwijderen($id, $jwt) {
-    
-    // $stmt2 = $this->database->connection->prepare("DELETE FROM opmerkingen WHERE opmerkingen.idGebruikers= ?");
-    // $stmt2->bind_param('i', $id);
-    // $stmt2->execute(); 
+    public function gebruikerVerwijderen($id, $jwt) {
 
-    // $stmt3 = $this->database->connection->prepare("DELETE FROM planning WHERE planning.idGebruikers= ?");
-    // $stmt3->bind_param('i', $id);
-    // $stmt3->execute(); 
+        // $stmt2 = $this->database->connection->prepare("DELETE FROM opmerkingen WHERE opmerkingen.idGebruikers= ?");
+        // $stmt2->bind_param('i', $id);
+        // $stmt2->execute();
 
-    $url = $GLOBALS['host'] .'/api/login/delete.php';
+        // $stmt3 = $this->database->connection->prepare("DELETE FROM planning WHERE planning.idGebruikers= ?");
+        // $stmt3->bind_param('i', $id);
+        // $stmt3->execute();
 
-    $data = array(
-        'id' => $id,
-        'jwt' => $jwt
-    );
+        $url = $GLOBALS['host'] .'/api/login/delete.php';
 
-    $body = json_encode($data);
+        $data = array(
+            'id' => $id,
+            'jwt' => $jwt
+        );
 
-    $ch = curl_init($url);
+        $body = json_encode($data);
 
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $ch = curl_init($url);
 
-    $result = curl_exec($ch);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-    curl_close($ch);
+        $result = curl_exec($ch);
+
+        curl_close($ch);
 
 //    $stmt = $this->database->connection->prepare("DELETE FROM gebruikers WHERE id= ?");
 //    $stmt->bind_param('i', $id);
 //    $stmt->execute();
-}
+    }
 
 // Gets all users
-public function gebruikersOphalen() {
-    $stmt = $this->database->connection->prepare('SELECT * FROM gebruikers');
-    $stmt->execute();
-    $result = $stmt->get_result();
-    return $result;
-}
+    public function gebruikersOphalen() {
+        $stmt = $this->database->connection->prepare('SELECT * FROM gebruikers');
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result;
+    }
 
-public function getGroepnaamBijGebruikers($id){
-    $stmt = $this->database->connection->prepare('SELECT groepnaam FROM groepen WHERE id = ?');
-    $stmt->bind_param('i', $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    return $result; 
-}
+    public function getGroepnaamBijGebruikers($id){
+        $stmt = $this->database->connection->prepare('SELECT groepnaam FROM groepen WHERE id = ?');
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result;
+    }
 
 
-public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $achternaam, $jwt) {
+    public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $achternaam, $jwt) {
 
-    $url = $GLOBALS['host'] .'/api/product/create.2.php';
+        $url = $GLOBALS['host'] .'/api/product/create.2.php';
 
-    $data = array(
-        'gebruikersnaam' => $gebruikersnaam,
-        'voornaam' => $voornaam,
-        'achternaam' => $achternaam,
-        'wachtwoord' => $wachtwoord,
-        'rol' => '0',
-        'jwt' => $jwt
-    );
+        $data = array(
+            'gebruikersnaam' => $gebruikersnaam,
+            'voornaam' => $voornaam,
+            'achternaam' => $achternaam,
+            'wachtwoord' => $wachtwoord,
+            'rol' => '0',
+            'jwt' => $jwt
+        );
 
-    $body = json_encode($data);
+        $body = json_encode($data);
 
-    $ch = curl_init($url);
+        $ch = curl_init($url);
 
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-    $result = curl_exec($ch);
+        $result = curl_exec($ch);
 
-    curl_close($ch);
+        curl_close($ch);
 
-    header("location:gebruikers.php");
-}
+        header("location:gebruikers.php");
+    }
 
 
 
@@ -196,66 +196,66 @@ public function gebruikerToevoegen($gebruikersnaam, $wachtwoord, $voornaam, $ach
 
 
 // Updates a cleaner
-public function gebruikerWijzigen($id, $gebruikersnaam, $voornaam, $achternaam,$rol, $groepid, $wachtwoord, $jwt) {
-    $url = $GLOBALS['host'] .'/api/login/update_user.php';
-    $data = array(
-        'gebruikersnaam' => $gebruikersnaam,
-        'voornaam' => $voornaam,
-        'achternaam' => $achternaam,
-        'rol' => $rol,
-        'groepid' => $groepid,
-        'wachtwoord' => $wachtwoord,
-        'id' => $id,
-        'jwt' => $jwt
+    public function gebruikerWijzigen($id, $gebruikersnaam, $voornaam, $achternaam,$rol, $groepid, $wachtwoord, $jwt) {
+        $url = $GLOBALS['host'] .'/api/login/update_user.php';
+        $data = array(
+            'gebruikersnaam' => $gebruikersnaam,
+            'voornaam' => $voornaam,
+            'achternaam' => $achternaam,
+            'rol' => $rol,
+            'groepid' => $groepid,
+            'wachtwoord' => $wachtwoord,
+            'id' => $id,
+            'jwt' => $jwt
 
-    );
+        );
 
-    $body = json_encode($data);
+        $body = json_encode($data);
 
-    $ch = curl_init($url);
+        $ch = curl_init($url);
 
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $body);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-    $result = curl_exec($ch);
+        $result = curl_exec($ch);
 
-    curl_close($ch);
-    $oke = json_decode($result);
-    $_SESSION['jwt'] = $oke->jwt;
-    header("location:gebruikers.php");
-}
+        curl_close($ch);
+        $oke = json_decode($result);
+        $_SESSION['jwt'] = $oke->jwt;
+        header("location:gebruikers.php");
+    }
 
-
-// Updates password
-public function wachtwoordWijzigen($id, $wachtwoord) {
-    $stmt = $this->database->connection->prepare("UPDATE gebruikers SET wachtwoord=? WHERE id= ?");
-    $stmt->bind_param('si', $wachtwoord, $id);
-    $stmt->execute();
-    header("location:gebruikers.php");
-}
 
 // Updates password
-public function wachtwoordWijzigen2($id, $wachtwoord) {
-    $stmt = $this->database->connection->prepare("UPDATE gebruikers SET wachtwoord=? WHERE id= ?");
-    $stmt->bind_param('si', $wachtwoord, $id);
-    $stmt->execute();
-    header("location:student.php");
-}
+    public function wachtwoordWijzigen($id, $wachtwoord) {
+        $stmt = $this->database->connection->prepare("UPDATE gebruikers SET wachtwoord=? WHERE id= ?");
+        $stmt->bind_param('si', $wachtwoord, $id);
+        $stmt->execute();
+        header("location:gebruikers.php");
+    }
+
+// Updates password
+    public function wachtwoordWijzigen2($id, $wachtwoord) {
+        $stmt = $this->database->connection->prepare("UPDATE gebruikers SET wachtwoord=? WHERE id= ?");
+        $stmt->bind_param('si', $wachtwoord, $id);
+        $stmt->execute();
+        // header("location:student.php");
+    }
 
 // Gets user based on the id
-public function gebruikerOphalen($id) {
-    $stmt = $this->database->connection->prepare('SELECT * FROM gebruikers WHERE id= ? LIMIT 1');
-    $stmt->bind_param('i', $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    return $result;
-}
+    public function gebruikerOphalen($id) {
+        $stmt = $this->database->connection->prepare('SELECT * FROM gebruikers WHERE id= ? LIMIT 1');
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result;
+    }
 
 // Method: POST, PUT, GET etc
 // Data: array("param" => "value") ==> index.php?param=value
 
-  public function CallAPI($method, $url, $data = false){
+    public function CallAPI($method, $url, $data = false){
         $curl = curl_init();
 
         switch ($method)
